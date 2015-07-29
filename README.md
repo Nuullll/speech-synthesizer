@@ -11,3 +11,5 @@ Homework No.2 for summer course: MATLAB
 
         根据共振峰频率的定义 $$f=\frac{\omega}{2\pi}=\frac{\Omega}{2\pi T}=\frac{\Omega f_s}{2\pi}=\frac{Arg(p)}{2\pi}f_s$$
 
+        取$f_s=8000$Hz, 求得**共振峰频率**(Formant Frequency) $f_f=999.94$Hz
+
