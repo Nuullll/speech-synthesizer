@@ -1,4 +1,4 @@
-# voice-synthesizer
+# speech-synthesizer
 Homework No.2 for summer course: MATLAB
 
 ## 语音预测模型
@@ -39,5 +39,7 @@ Homework No.2 for summer course: MATLAB
             ![filter](pic/filter.png)
 
             **与impz画出的结果相同**
+
+2. 
 
 
