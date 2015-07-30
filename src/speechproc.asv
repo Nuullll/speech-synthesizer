@@ -35,8 +35,8 @@ function speechproc()
         if n == 27
         % (3) 在此位置写程序，观察预测系统的零极点图
             [z,p,~] = tf2zp([1,zeros(1,P)],A);
-            zplane(z,p);
-            title('预测系统零极点图(第27帧)');
+            
+            
         end
         
         s_f = s((n-1)*FL+1:n*FL);       % 本帧语音，下面就要对它做处理

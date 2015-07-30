@@ -185,6 +185,23 @@ Homework No.2 for summer course: MATLAB
 
 3. 在`speechproc`运行至第27帧时观察预测系统的**零极点图**
 
+    **预测系统** $$e(n)=s(n)-\sum_{k=1}^{N}a_k s(n-k)$$
 
+    其中$s(n)$为输入, $e(n)$为输出, 则系统函数 $$H_{pre}(z)=\frac{z^N}{z^N-\sum_{k=1}^{N}a_k z^{N-k}}$$
+
+    取**预测系数个数** $N=P=10$
+
+    在`speechproc`中相应位置插入代码:
+
+    ```matlab
+    if n == 27
+    % (3) 在此位置写程序，观察预测系统的零极点图
+        [z,p,~] = tf2zp([1,zeros(1,P)],A);
+        zplane(z,p);
+        title('预测系统零极点图(第27帧)');
+    end
+    ```
+
+    ![预测系统第27帧零极点图](pic/zplane-pre27.png)
 
 
