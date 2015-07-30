@@ -34,7 +34,7 @@ function speechproc()
 
         if n == 27
         % (3) 在此位置写程序，观察预测系统的零极点图
-            [z,p,~] = tf2zp([1,zeros(1,P)],A);
+            [z,p,~] = tf2zp(A,[1,zeros(1,P)]);
             zplane(z,p);
             title('预测系统零极点图(第27帧)');
         end
@@ -42,13 +42,13 @@ function speechproc()
         s_f = s((n-1)*FL+1:n*FL);       % 本帧语音，下面就要对它做处理
 
         % (4) 在此位置写程序，用filter函数s_f计算激励，注意保持滤波器状态
-        [Y,zi_pre] = filter([1,zeros(1,P)],A,s_f,zi_pre);   % keep state
+        [Y,zi_pre] = filter(A,[1,zeros(1,P)],s_f,zi_pre);   % keep state
         exc((n-1)*FL+1:n*FL) = Y;
         % exc((n-1)*FL+1:n*FL) = ... 将你计算得到的激励写在这里
 
         % (5) 在此位置写程序，用filter函数和exc重建语音，注意保持滤波器状态
-
-        
+        [Y,zi_rec] = filter([1,zeros(1,P)],A,Y,zi_rec);
+        s_rec((n-1)*FL+1:n*FL) = Y;
         % s_rec((n-1)*FL+1:n*FL) = ... 将你计算得到的重建语音写在这里
 
         % 注意下面只有在得到exc后才会计算正确
@@ -80,6 +80,7 @@ function speechproc()
 
     % (6) 在此位置写程序，听一听 s ，exc 和 s_rec 有何区别，解释这种区别
     % 后面听语音的题目也都可以在这里写，不再做特别注明
+    sound([s;exc;s_rec],8000);
     
 
     % 保存所有文件

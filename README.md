@@ -187,7 +187,7 @@ Homework No.2 for summer course: MATLAB
 
     **预测系统** $$e(n)=s(n)-\sum_{k=1}^{N}a_k s(n-k)$$
 
-    其中$s(n)$为输入, $e(n)$为输出, 则系统函数 $$H_{pre}(z)=\frac{z^N}{z^N-\sum_{k=1}^{N}a_k z^{N-k}}$$
+    其中$s(n)$为输入, $e(n)$为输出, 则系统函数 $$H_{pre}(z)=\frac{z^N-\sum_{k=1}^{N}a_k z^{N-k}}{z^N}$$
 
     取**预测系数个数** $N=P=10$
 
@@ -196,7 +196,7 @@ Homework No.2 for summer course: MATLAB
     ```matlab
     if n == 27
     % (3) 在此位置写程序，观察预测系统的零极点图
-        [z,p,~] = tf2zp([1,zeros(1,P)],A);
+        [z,p,~] = tf2zp(A,[1,zeros(1,P)]);
         zplane(z,p);
         title('预测系统零极点图(第27帧)');
     end
@@ -208,7 +208,22 @@ Homework No.2 for summer course: MATLAB
 
     ```matlab
     % (4) 在此位置写程序，用filter函数s_f计算激励，注意保持滤波器状态
-    [Y,zi_pre] = filter([1,zeros(1,P)],A,s_f,zi_pre);   % keep state: zi_pre
+    [Y,zi_pre] = filter(A,[1,zeros(1,P)],s_f,zi_pre);   % keep state: zi_pre
     exc((n-1)*FL+1:n*FL) = Y;
     % exc((n-1)*FL+1:n*FL) = ... 将你计算得到的激励写在这里
     ```
+
+5. 完善`speechproc.m`程序, 在循环中添加程序: 用你计算得到的激励信号$e(n)$和预测模型系数$\{a_i\}$, 用`filter`计算重建语音$\hat{s}(n)$. **同样要注意维持滤波器的状态不变**
+
+    对于**语音重建模型** $$\hat{s}(n)=x(n)+\sum_{k=1}^{N}a_k \hat{s}(n-k)$$
+
+    输入为$x(n)$, 输出为$\hat{s}(n)$, 则系统函数 $$H_{rec}(z)=\frac{1}{H_{pre}(z)}=\frac{z^N}{z^N-\sum_{k=1}^{N}a_k z^{N-k}}$$
+
+    ```matlab
+    % (5) 在此位置写程序，用filter函数和exc重建语音，注意保持滤波器状态
+    [Y,zi_rec] = filter([1,zeros(1,P)],A,Y,zi_rec);
+    s_rec((n-1)*FL+1:n*FL) = Y;
+    % s_rec((n-1)*FL+1:n*FL) = ... 将你计算得到的重建语音写在这里
+    ```
+
+
