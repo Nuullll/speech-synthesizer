@@ -204,4 +204,11 @@ Homework No.2 for summer course: MATLAB
 
     ![预测系统第27帧零极点图](pic/zplane-pre27.png)
 
+4. 在循环中添加程序: 对每帧语音信号$s(n)$和预测模型系数$\{a_i\}, 用`filter`计算激励信号$e(n)$. **注意: 在系数变化的情况下连续滤波, 需维持滤波器的状态不变**
 
+    ```matlab
+    % (4) 在此位置写程序，用filter函数s_f计算激励，注意保持滤波器状态
+    [Y,zi_pre] = filter([1,zeros(1,P)],A,s_f,zi_pre);   % keep state: zi_pre
+    exc((n-1)*FL+1:n*FL) = Y;
+    % exc((n-1)*FL+1:n*FL) = ... 将你计算得到的激励写在这里
+    ```
