@@ -11,7 +11,7 @@ Homework No.2 for summer course: MATLAB
 
         根据共振峰频率的定义 $$f=\frac{\omega}{2\pi}=\frac{\Omega}{2\pi T}=\frac{\Omega f_s}{2\pi}=\frac{Arg(p)}{2\pi}f_s$$
 
-        取$f_s=8000$Hz, 求得**共振峰频率**(Formant Frequency) $f_f=999.94$Hz
+        取$f_s=8000\text{Hz}$, 求得**共振峰频率**(Formant Frequency) $f_f=999.94\text{Hz}$
 
     3. 绘制**零极点图**, `zplane(Z,P)`
 
@@ -204,7 +204,7 @@ Homework No.2 for summer course: MATLAB
 
     ![预测系统第27帧零极点图](pic/zplane-pre27.png)
 
-4. 在循环中添加程序: 对每帧语音信号$s(n)$和预测模型系数$\{a_i\}, 用`filter`计算激励信号$e(n)$. **注意: 在系数变化的情况下连续滤波, 需维持滤波器的状态不变**
+4. 在循环中添加程序: 对每帧语音信号$s(n)$和预测模型系数$\{a_i\}$, 用`filter`计算激励信号$e(n)$. **注意: 在系数变化的情况下连续滤波, 需维持滤波器的状态不变**
 
     ```matlab
     % (4) 在此位置写程序，用filter函数s_f计算激励，注意保持滤波器状态
