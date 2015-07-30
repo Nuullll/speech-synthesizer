@@ -35,7 +35,7 @@ function speechproc()
         if n == 27
         % (3) 在此位置写程序，观察预测系统的零极点图
             [z,p,~] = tf2zp(A,[1,zeros(1,P)]);
-            zplane(z,p);
+            figure(1);zplane(z,p);
             title('预测系统零极点图(第27帧)');
         end
         
@@ -81,7 +81,15 @@ function speechproc()
     % (6) 在此位置写程序，听一听 s ，exc 和 s_rec 有何区别，解释这种区别
     % 后面听语音的题目也都可以在这里写，不再做特别注明
     sound([s;exc;s_rec],8000);
-    
+    figure(2);
+    subplot(3,1,1);plot(s);title('原声');
+    subplot(3,1,2);plot(exc);title('激励信号');axis([0 14000 -5e4 5e4]);
+    subplot(3,1,3);plot(s_rec);title('重建信号');
+    figure(3);
+    plot(s,'k');axis([6400 6500 -2e4 2e4]);hold on
+    plot(exc,'r');
+    plot(s_rec);hold off;
+    legend('原声','激励信号','重建信号');title('片段对比');
 
     % 保存所有文件
     writespeech('exc.pcm',exc);
