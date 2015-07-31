@@ -475,7 +475,8 @@ Homework No.2 for summer course: MATLAB
 
     p = roots(a);    % get poles
     for k=1:length(p)
-        p(k) = rotatez(p(k),sign(angle(p(k)))*2*pi*df/fs);    % rotate
+        p(k) = rotatez(p(k),sign(rem(angle(p(k)),pi))*2*pi*df/fs);    % rotate
+        % use rem() in case angle equals pi
     end
     A = poly(p);    % get poly
 
@@ -581,3 +582,7 @@ Homework No.2 for summer course: MATLAB
     * 波形包络也有变化, 原因是改变了**基音周期**, 激励信号$e(n)$变化了
 
     * 时长未改变
+
+
+## 变速变调
+
