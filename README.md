@@ -42,7 +42,7 @@ Homework No.2 for summer course: MATLAB
 
             **与impz画出的结果相同**
 
-2. 阅读`speechproc.m`
+2. 阅读[speechproc.m](src/speechproc.m)
 
     ```matlab
     function speechproc()
@@ -222,7 +222,7 @@ Homework No.2 for summer course: MATLAB
     % exc((n-1)*FL+1:n*FL) = ... 将你计算得到的激励写在这里
     ```
 
-5. 完善`speechproc.m`程序, 在循环中添加程序: 用你计算得到的激励信号$e(n)$和预测模型系数$\{a_i\}$, 用`filter`计算重建语音$\hat{s}(n)$. **同样要注意维持滤波器的状态不变**
+5. 完善[speechproc.m](src/speechproc.m)程序, 在循环中添加程序: 用你计算得到的激励信号$e(n)$和预测模型系数$\{a_i\}$, 用`filter`计算重建语音$\hat{s}(n)$. **同样要注意维持滤波器的状态不变**
 
     对于**语音重建模型** $$\hat{s}(n)=x(n)+\sum_{k=1}^{N}a_k \hat{s}(n-k)$$
 
@@ -235,7 +235,7 @@ Homework No.2 for summer course: MATLAB
     % s_rec((n-1)*FL+1:n*FL) = ... 将你计算得到的重建语音写在这里
     ```
 
-6. 对比$e(n)$, $s(n)$以及$\hat{s}(n)$信号
+6. 对比**归一化**([normalize.m](src/normalize.m))后的$e(n)$, $s(n)$以及$\hat{s}(n)$信号
 
     ```matlab
     % normalization
@@ -322,11 +322,13 @@ Homework No.2 for summer course: MATLAB
 
     * 300Hz单位样值串音调更高
 
+    ![对比单位样值串](pic/impulsestring.png)
+
 2. **(练习8)** 真实语音信号的基音周期总是随时间变化的. 我们首先将信号分成若干个10毫秒长的段, 假设每个段内基音周期固定不变, 但段和段之间则不同, 具体为 $$PT=80+5mod(m,50)$$
 
     其中$PT$表示基因周期, $m$表示段序号, **相邻两脉冲的间隔由前一个脉冲所在的段序号决定**
 
-    生成时长为1秒钟的上述信号: 
+    生成时长为1秒钟的上述信号([pitchtest.m](src/pitchtest.m)): 
 
     ```matlab
     x = zeros(8000,1);
@@ -335,8 +337,9 @@ Homework No.2 for summer course: MATLAB
     while m <= 100
         x(cursor) = 1;
         cursor = cursor + 80 + 5*mod(m,50);     % next cursor
-        m = floor((cursor-1)/80) + 1;           % locate next cursor
+        m = ceil(cursor/80);                    % locate next cursor
     end
+    figure;
     stem(0:8000-1,x);
     ```
 
@@ -351,4 +354,188 @@ Homework No.2 for summer course: MATLAB
 3. **(练习9)** 用`filter`将**(8)**中的激励信号$e(n)$输入到**(1)**的系统中计算输出$s(n)$
 
     ```matlab
-    y = 
+    y = normalize(filter(b,a,x));
+    sound(y,fs);
+    ```
+
+    **试听**
+
+    * 经过滤波器后**音色**发生显著变化, 变得更清脆了, 不那么刺耳
+
+    * 经过滤波器后**音调**似乎变低沉了一些
+
+    ![滤波前后对比](pic/before-after.png)
+
+4. **(练习10)** 重改[speechproc.m](src/speechproc.m)程序. 利用每一帧已经计算得到的基音周期和**(8)**的方法, 生成合成激励信号$G x(n)$, 用`filter`函数将$G x(n)$送入合成滤波器得到合成语音$\hat{s}(n)$
+
+    ```matlab
+    % (10) 在此位置写程序，生成合成激励，并用激励和filter函数产生合成语音
+    if n == 3                   % first loop
+        cursor = (n-1)*FL+1;    % initialize cursor
+        m = n;                  % initialize m
+    end
+    
+    while m == n                % cursor still point into current frame
+        exc_syn(cursor) = 1;
+        cursor = cursor + PT;   % next cursor
+        m = ceil(cursor/FL);    % locate next cursor
+    end
+    
+    s_syn((n-1)*FL+1:n*FL) = filter([1,zeros(1,P)],A,...
+        G*exc_syn((n-1)*FL+1:n*FL));
+    % exc_syn((n-1)*FL+1:n*FL) = ... 将你计算得到的合成激励写在这里
+    % s_syn((n-1)*FL+1:n*FL) = ...   将你计算得到的合成语音写在这里
+    ```
+
+    **试听**
+
+    * 可以听出合成信号语音的内容
+
+    * 语音的清晰度不如原语音, 有杂音
+
+    * 音调低沉, 比较压抑, 有种**收音机**的厚重感
+
+    **波形比较**
+
+    ![合成音](pic/syn.png)
+
+    * 波形包络基本相同
+
+    * `y<0`部分的包络似乎不太吻合
+
+
+## 变速不变调
+
+1. **(练习11)** 仿照**(10)**重改[speechproc.m](src/speechproc.m)程序, 只不过将**(10)**中合成激励的长度增加一倍, 即原来10毫秒的一帧变成了20毫秒一帧, 再用同样的方法合成出语音`s_syn_v`
+
+    ```matlab
+    % (11) 不改变基音周期和预测系数，将合成激励的长度增加一倍，再作为filter
+    % 的输入得到新的合成语音，听一听是不是速度变慢了，但音调没有变。
+    FL_v = 2*FL;
+    if n == 3                   % first loop
+        cursor_v = (n-1)*FL_v+1;    % initialize cursor
+        m_v = n;                  % initialize m
+    end
+    
+    while m_v == n                % cursor still point into current frame
+        exc_syn_v(cursor_v) = 1;
+        cursor_v = cursor_v + PT;   % next cursor
+        m_v = ceil(cursor_v/FL_v);    % locate next cursor
+    end
+    
+    s_syn_v((n-1)*FL_v+1:n*FL_v) = filter([1,zeros(1,P)],A,...
+        G*exc_syn_v((n-1)*FL_v+1:n*FL_v));
+    % exc_syn_v((n-1)*FL_v+1:n*FL_v) = ... 将你计算得到的加长合成激励写在这里
+    % s_syn_v((n-1)*FL_v+1:n*FL_v) = ...   将你计算得到的加长合成语音写在这里
+    ```
+
+    **试听**
+
+    * 在合成信号`s_syn`的基础上, `s_syn_v`速度变为原来的一半, 而音调没有变化
+
+    ![半速原调](pic/half-velocity.png)
+
+
+## 变调不变速
+
+1. **(练习12)** 重新考察**(1)**中的系统 $$e(n)=s(n)-a_1s(n-1)-a_2s(n-2)$$ $$a_1=1.3789, a_2=-0.9506$$ $$p_{1,2}=0.6895\pm 0.6894j=0.9750e^{\pm j0.7854}$$ $$f_f=999.94\text{Hz}$$
+
+    而**共振峰频率** $$f_f=\frac{Arg(p)}{2\pi}f_s$$
+
+    因此需通过**旋转极点**(改变幅角)改变共振峰频率
+
+    定义`rotatez`函数用以旋转复数([rotatez.m](src/rotatez.m))
+
+    ```matlab
+    function zr = rotatez(z,rad)
+    %Rotate complex number z by rad counterclockwisely
+
+    zr = z*exp(rad*1j);
+
+    end
+    ```
+
+    定义**变频比** $$r_f=\frac{{f_f}'}{f_f}$$
+
+    定义`changetone`函数([changetone.m](src/changetone.m))
+
+    ```matlab
+    function A = changetone(a,rf)
+    %A = changetong(a,rf)
+    %输入:
+    %   <vector>a: 传递函数的分母, 用于求极点
+    %   <double>rf: 变频比
+    %输出:
+    %   <row vector>A: 变频后新系统传递函数的分母
+
+    p = roots(a);    % get poles
+    for k=1:length(p)
+        p(k) = rotatez(p(k),(rf-1)*angle(p(k)));    % rotate
+    end
+    A = poly(p);    % get poly
+
+    end
+    ```
+
+    ```matlab
+    >> a_t = changetone(a,1.15)
+
+    a_t =
+
+        1.0000   -1.5314    0.9506
+    ```
+
+    因此**共振峰频率**提高150Hz后, $a_1=1.5314, a_2=-0.9506$
+
+    **对比系统前后变化**
+
+    * 绘制**零极点图** ([zplane_changetone.m](src/zplane_changetone.m))
+
+        ```matlab
+        [Z,P,~]=tf2zp(b,a);
+        [Z_t,P_t,~]=tf2zp(b,a_t);
+        figure;
+        [Hz1,Hp1,Hl1] = zplane(Z,P);
+        hold on;
+        [Hz2,Hp2,Hl2] = zplane(Z_t,P_t);
+        hold off;
+        xlim([-1.4 1.4]);
+        set(findobj(Hz2, 'Type', 'line'), 'Color', 'r')
+        set(findobj(Hp2, 'Type', 'line'), 'Color', 'r')
+        legend([Hp1,Hp2],'原系统','变调系统');
+        title('旋转极点');
+        ```
+
+        ![旋转极点](pic/rotate-poles.png)
+
+        **极点幅角绝对值变大, 共振峰频率增大**
+
+    * 绘制**频率响应** ([freqz_changetone.m](src/freqz_changetone.m))
+
+        ```matlab
+        [H,F]=freqz(b,a,512,fs);
+        [H_t,F_t]=freqz(b,a_t,512,fs);
+        figure;
+        subplot 211
+        plot(F,20*log10(abs(H)));hold on;
+        grid on;
+        xlabel('Frequency (Hz)');ylabel('Magnitude (dB)');
+        plot(F,20*log10(abs(H_t)),'r');hold off;
+        legend('原系统','变调系统');
+        title('幅频特性');
+        subplot 212
+        plot(F,angle(H));hold on;
+        grid on;
+        hold off;
+        plot(F_t,angle(H)/pi*180);hold on;
+        grid on;
+        xlabel('Frequency (Hz)');ylabel('Phase (degrees)');
+        plot(F_t,angle(H_t)/pi*180,'r');hold off;
+        legend('原系统','变调系统');
+        title('相频特性');
+        ```
+
+        ![频率响应对比](pic/freqz-changetone.png)
+
+        **变调后系统共振峰频率变为1150Hz**
+
