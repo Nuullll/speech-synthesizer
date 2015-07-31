@@ -94,8 +94,20 @@ function speechproc()
         % s_syn_v((n-1)*FL_v+1:n*FL_v) = ...   将你计算得到的加长合成语音写在这里
         
         % (13) 将基音周期减小一半，将共振峰频率增加150Hz，重新合成语音，听听是啥感受～
-
+        PT_t = round(PT/2);
+        if n == 3                   % first loop
+            cursor_t = (n-1)*FL+1;    % initialize cursor
+            m_t = n;                  % initialize m
+        end
         
+        while m_t == n                % cursor still point into current frame
+            exc_syn_t(cursor_t) = 1;
+            cursor_t = cursor_t + PT_t;   % next cursor
+            m_t = ceil(cursor_t/FL);    % locate next cursor
+        end
+        A_t = changetone(A,150,8000);   % ff += 150
+        s_syn_t((n-1)*FL+1:n*FL) = filter([1,zeros(1,P)],A_t,...
+            G*exc_syn_t((n-1)*FL+1:n*FL));
         % exc_syn_t((n-1)*FL+1:n*FL) = ... 将你计算得到的变调合成激励写在这里
         % s_syn_t((n-1)*FL+1:n*FL) = ...   将你计算得到的变调合成语音写在这里
         
@@ -108,10 +120,14 @@ function speechproc()
     s = normalize(s);
     exc = normalize(exc);
     s_rec = normalize(s_rec);
+    exc_syn = normalize(exc_syn);
     s_syn = normalize(s_syn);
+    exc_syn_v = normalize(exc_syn_v);
     s_syn_v = normalize(s_syn_v);
+    exc_syn_t = normalize(exc_syn_t);
+    s_syn_t = normalize(s_syn_t);
     
-    sound([s;exc;s_rec;s_syn;s_syn_v],8000);
+    sound([s;exc;s_rec;s_syn;s_syn_v;s_syn_t],8000);
     figure(2);
     subplot(3,1,1);plot(s);title('原声');
     subplot(3,1,2);plot(exc);title('激励信号');
@@ -131,6 +147,10 @@ function speechproc()
     subplot(2,1,1);plot(s_syn);title('合成信号(原速原调)');axis([0 3e4 -1 1]);
     subplot(2,1,2);plot(s_syn_v);title('合成信号(半速原调)');
     
+    figure(6);
+    subplot(3,1,1);plot(s_syn);title('合成信号(原速原调)');
+    subplot(3,1,2);plot(s_syn_v);title('合成信号(半速原调)');
+    subplot(3,1,3);plot(s_syn_t);title('合成信号(原速升调)');
 
     % 保存所有文件
     writespeech('exc.pcm',exc);

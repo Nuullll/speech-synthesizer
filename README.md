@@ -370,6 +370,7 @@ Homework No.2 for summer course: MATLAB
 
     ```matlab
     % (10) 在此位置写程序，生成合成激励，并用激励和filter函数产生合成语音
+
     if n == 3                   % first loop
         cursor = (n-1)*FL+1;    % initialize cursor
         m = n;                  % initialize m
@@ -383,6 +384,7 @@ Homework No.2 for summer course: MATLAB
     
     s_syn((n-1)*FL+1:n*FL) = filter([1,zeros(1,P)],A,...
         G*exc_syn((n-1)*FL+1:n*FL));
+
     % exc_syn((n-1)*FL+1:n*FL) = ... 将你计算得到的合成激励写在这里
     % s_syn((n-1)*FL+1:n*FL) = ...   将你计算得到的合成语音写在这里
     ```
@@ -411,6 +413,7 @@ Homework No.2 for summer course: MATLAB
     ```matlab
     % (11) 不改变基音周期和预测系数，将合成激励的长度增加一倍，再作为filter
     % 的输入得到新的合成语音，听一听是不是速度变慢了，但音调没有变。
+
     FL_v = 2*FL;
     if n == 3                   % first loop
         cursor_v = (n-1)*FL_v+1;    % initialize cursor
@@ -425,6 +428,7 @@ Homework No.2 for summer course: MATLAB
     
     s_syn_v((n-1)*FL_v+1:n*FL_v) = filter([1,zeros(1,P)],A,...
         G*exc_syn_v((n-1)*FL_v+1:n*FL_v));
+
     % exc_syn_v((n-1)*FL_v+1:n*FL_v) = ... 将你计算得到的加长合成激励写在这里
     % s_syn_v((n-1)*FL_v+1:n*FL_v) = ...   将你计算得到的加长合成语音写在这里
     ```
@@ -455,22 +459,23 @@ Homework No.2 for summer course: MATLAB
     end
     ```
 
-    定义**变频比** $$r_f=\frac{{f_f}'}{f_f}$$
+    则共振峰频率变化量为 $$\Delta f = \frac{\Delta Arg(p)}{2\pi} f_s$$
 
     定义`changetone`函数([changetone.m](src/changetone.m))
 
     ```matlab
-    function A = changetone(a,rf)
-    %A = changetong(a,rf)
+    function A = changetone(a,df,fs)
+    %A = changetong(a,df,fs)
     %输入:
     %   <vector>a: 传递函数的分母, 用于求极点
-    %   <double>rf: 变频比
+    %   <double>df: 频率变化量
+    %   <double>fs: 采样频率
     %输出:
     %   <row vector>A: 变频后新系统传递函数的分母
 
     p = roots(a);    % get poles
     for k=1:length(p)
-        p(k) = rotatez(p(k),(rf-1)*angle(p(k)));    % rotate
+        p(k) = rotatez(p(k),sign(angle(p(k)))*2*pi*df/fs);    % rotate
     end
     A = poly(p);    % get poly
 
@@ -478,14 +483,14 @@ Homework No.2 for summer course: MATLAB
     ```
 
     ```matlab
-    >> a_t = changetone(a,1.15)
+    >> a_t = changetone(a,150,fs)
 
     a_t =
 
-        1.0000   -1.5314    0.9506
+        1.0000   -1.2073    0.9506
     ```
 
-    因此**共振峰频率**提高150Hz后, $a_1=1.5314, a_2=-0.9506$
+    因此**共振峰频率**提高150Hz后, $a_1=1.2073, a_2=-0.9506$
 
     **对比系统前后变化**
 
@@ -515,6 +520,7 @@ Homework No.2 for summer course: MATLAB
         ```matlab
         [H,F]=freqz(b,a,512,fs);
         [H_t,F_t]=freqz(b,a_t,512,fs);
+
         figure;
         subplot 211
         plot(F,20*log10(abs(H)));hold on;
@@ -523,6 +529,7 @@ Homework No.2 for summer course: MATLAB
         plot(F,20*log10(abs(H_t)),'r');hold off;
         legend('原系统','变调系统');
         title('幅频特性');
+
         subplot 212
         plot(F,angle(H));hold on;
         grid on;
@@ -539,3 +546,38 @@ Homework No.2 for summer course: MATLAB
 
         **变调后系统共振峰频率变为1150Hz**
 
+2. **(练习13)** 仿照**(10)**重改[speechproc.m](src/speechproc.m)程序, 但要将基音周期减小一半, 将所有的共振峰频率都增加150Hz
+
+    ```matlab
+    % (13) 将基音周期减小一半，将共振峰频率增加150Hz，重新合成语音，听听是啥感受～
+
+    PT_t = round(PT/2);
+    if n == 3                   % first loop
+        cursor_t = (n-1)*FL+1;    % initialize cursor
+        m_t = n;                  % initialize m
+    end
+    
+    while m_t == n                % cursor still point into current frame
+        exc_syn_t(cursor_t) = 1;
+        cursor_t = cursor_t + PT_t;   % next cursor
+        m_t = ceil(cursor_t/FL);    % locate next cursor
+    end
+
+    A_t = changetone(A,150,8000);   % ff += 150
+
+    s_syn_t((n-1)*FL+1:n*FL) = filter([1,zeros(1,P)],A_t,...
+        G*exc_syn_t((n-1)*FL+1:n*FL));
+
+    % exc_syn_t((n-1)*FL+1:n*FL) = ... 将你计算得到的变调合成激励写在这里
+    % s_syn_t((n-1)*FL+1:n*FL) = ...   将你计算得到的变调合成语音写在这里
+    ```
+
+    **试听**
+
+    * 由男声变为**女声**
+
+    ![变调不变速](pic/raise-tone.png)
+
+    * 波形包络也有变化, 原因是改变了**基音周期**, 激励信号$e(n)$变化了
+
+    * 时长未改变
