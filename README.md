@@ -191,6 +191,15 @@ Homework No.2 for summer course: MATLAB
 
     取**预测系数个数** $N=P=10$
 
+    * `lpc`函数
+
+        ```matlab
+        [A,E] = lpc(X,N)
+        % A = [1 A(2) A(3) ... A(N+1)]
+        ```
+
+        系数$A_i$使得 $$err(n)=X(n)-\sum_{k=1}^{N}(-A_{k+1} X(n-k))$$ 取到最小值, 于是可知 $$A = [1,-a_1,-a_2,...,-a_N]$$
+
     在`speechproc`中相应位置插入代码:
 
     ```matlab
@@ -331,7 +340,7 @@ Homework No.2 for summer course: MATLAB
     stem(0:8000-1,x);
     ```
 
-    ![基音周期变化的信号](pic/pitch-time-variant)
+    ![基音周期变化的信号](pic/pitch-time-variant.png)
 
     **试听**
 
