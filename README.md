@@ -347,9 +347,9 @@ Homework No.2 for summer course: MATLAB
 
     **试听**
 
-    * 生成的信号被均分为重复的两段, 每段内**音调逐渐降低**
+    * 生成的信号被均分为重复的两段, 每段内音调逐渐变化
 
-    * 不好听, **很压抑**
+    * 不好听, **很压抑**, 好像也不能称之为**颤音**, 这个声音让我想到**拉链**的声音, 频率随时间变化的特征也相似, 姑且称之为**拉链音**
 
 3. **(练习9)** 用`filter`将**(8)**中的激励信号$e(n)$输入到**(1)**的系统中计算输出$s(n)$
 
@@ -585,4 +585,322 @@ Homework No.2 for summer course: MATLAB
 
 
 ## 变速变调(探究)
+
+1. 容易发现, 变速变调可以完美地结合在一起, 新建`speechproc1(rv,rt,df)`([speechproc1.m](src/speechproc1.m))实现**变速变调**功能
+
+    ```matlab
+    function H = speechproc1(rv,rt,df)
+    %speechproc1(rv,rt,df)
+    %输入:
+    %   <double>rv: 调速比
+    %   <double>rt: 调(tiao)调(diao)比, ratio_tone
+    %   <double>df: 共振峰频率改变量
+    %输出文件
+
+        % 定义常数
+        FL = 80;                % 帧长
+        WL = 240;               % 窗长
+        P = 10;                 % 预测系数个数
+        s = readspeech('voice.pcm',100000);             % 载入语音s
+        L = length(s);          % 读入语音长度
+        FN = floor(L/FL)-2;     % 计算帧数
+        % 预测和重建滤波器
+        exc = zeros(L,1);       % 激励信号（预测误差）
+        zi_pre = zeros(P,1);    % 预测滤波器的状态
+        s_rec = zeros(L,1);     % 重建语音
+        zi_rec = zeros(P,1);
+        % 合成滤波器
+        exc_syn = zeros(ceil(L/rv),1);   % 合成的激励信号（脉冲串）
+        s_syn = zeros(ceil(L/rv),1);     % 合成语音
+        
+        hw = hamming(WL);       % 汉明窗
+        
+        % 依次处理每帧语音
+        for n = 3:FN
+
+            % 计算预测系数（不需要掌握）
+            s_w = s(n*FL-WL+1:n*FL).*hw;    %汉明窗加权后的语音
+            [A E] = lpc(s_w, P);            %用线性预测法计算P个预测系数
+                                            % A是预测系数，E会被用来计算合成激励的能量
+            
+            s_f = s((n-1)*FL+1:n*FL);       % 本帧语音，下面就要对它做处理
+
+            % (4) 在此位置写程序，用filter函数s_f计算激励，注意保持滤波器状态
+            [Y,zi_pre] = filter(A,[1,zeros(1,P)],s_f,zi_pre);   % keep state
+            exc((n-1)*FL+1:n*FL) = Y;
+            % exc((n-1)*FL+1:n*FL) = ... 将你计算得到的激励写在这里
+
+            % 注意下面只有在得到exc后才会计算正确
+            s_Pitch = exc(n*FL-222:n*FL);
+            PT = findpitch(s_Pitch);    % 计算基音周期PT（不要求掌握）
+            G = sqrt(E*PT);           % 计算合成激励的能量G（不要求掌握）
+
+            
+            % 变速变调
+            FL_v = round(FL/rv);        % change velocity
+            PT_t = round(PT/rt);        % change tone
+            A_t = changetone(A,df,8000);% change predict sys
+            
+            if n == 3                   % first loop
+                cursor = (n-1)*FL_v+1;    % initialize cursor
+                m = n;                  % initialize m
+            end
+            
+            while m == n                % cursor still point into current frame
+                exc_syn(cursor) = 1;
+                cursor = cursor + PT_t;   % next cursor
+                m = ceil(cursor/FL_v);    % locate next cursor
+            end
+            
+            s_syn((n-1)*FL_v+1:n*FL_v) = filter([1,zeros(1,P)],A_t,...
+                G*exc_syn((n-1)*FL_v+1:n*FL_v));
+            
+        end
+
+        % 保存所有文件
+        writespeech('exc_syn_c.pcm',exc_syn);     % _c means Combine both velocity and tone change
+        writespeech('syn_c.pcm',s_syn);
+        
+        % normalization
+        s = normalize(s);
+        s_syn = normalize(s_syn);
+        
+        sound(s_syn,8000);
+        H = plot(s_syn);title('"电灯比油灯进步多了"');
+        
+    return
+
+    % 从PCM文件中读入语音
+    function s = readspeech(filename, L)
+        fid = fopen(filename, 'r');
+        s = fread(fid, L, 'int16');
+        fclose(fid);
+    return
+
+    % 写语音到PCM文件中
+    function writespeech(filename,s)
+        fid = fopen(filename,'w');
+        fwrite(fid, s, 'int16');
+        fclose(fid);
+    return
+
+    % 计算一段语音的基音周期，不要求掌握
+    function PT = findpitch(s)
+    [B, A] = butter(5, 700/4000);
+    s = filter(B,A,s);
+    R = zeros(143,1);
+    for k=1:143
+        R(k) = s(144:223)'*s(144-k:223-k);
+    end
+    [R1,T1] = max(R(80:143));
+    T1 = T1 + 79;
+    R1 = R1/(norm(s(144-T1:223-T1))+1);
+    [R2,T2] = max(R(40:79));
+    T2 = T2 + 39;
+    R2 = R2/(norm(s(144-T2:223-T2))+1);
+    [R3,T3] = max(R(20:39));
+    T3 = T3 + 19;
+    R3 = R3/(norm(s(144-T3:223-T3))+1);
+    Top = T1;
+    Rop = R1;
+    if R2 >= 0.85*Rop
+        Rop = R2;
+        Top = T2;
+    end
+    if R3 > 0.85*Rop
+        Rop = R3;
+        Top = T3;
+    end
+    PT = Top;
+    return
+
+
+    ```
+
+2. **参数测试**
+
+    为了方便地进行`rv rt df`三个参数的调整, 不妨写一个简陋的`GUI`([gui.m](src/gui.m))
+
+    ```matlab
+    function varargout = gui(varargin)
+    % GUI MATLAB code for gui.fig
+    %      GUI, by itself, creates a new GUI or raises the existing
+    %      singleton*.
+    %
+    %      H = GUI returns the handle to a new GUI or the handle to
+    %      the existing singleton*.
+    %
+    %      GUI('CALLBACK',hObject,eventData,handles,...) calls the local
+    %      function named CALLBACK in GUI.M with the given input arguments.
+    %
+    %      GUI('Property','Value',...) creates a new GUI or raises the
+    %      existing singleton*.  Starting from the left, property value pairs are
+    %      applied to the GUI before gui_OpeningFcn gets called.  An
+    %      unrecognized property name or invalid value makes property application
+    %      stop.  All inputs are passed to gui_OpeningFcn via varargin.
+    %
+    %      *See GUI Options on GUIDE's Tools menu.  Choose "GUI allows only one
+    %      instance to run (singleton)".
+    %
+    % See also: GUIDE, GUIDATA, GUIHANDLES
+
+    % Edit the above text to modify the response to help gui
+
+    % Last Modified by GUIDE v2.5 31-Jul-2015 22:09:11
+
+    % Begin initialization code - DO NOT EDIT
+    gui_Singleton = 1;
+    gui_State = struct('gui_Name',       mfilename, ...
+                       'gui_Singleton',  gui_Singleton, ...
+                       'gui_OpeningFcn', @gui_OpeningFcn, ...
+                       'gui_OutputFcn',  @gui_OutputFcn, ...
+                       'gui_LayoutFcn',  [] , ...
+                       'gui_Callback',   []);
+    if nargin && ischar(varargin{1})
+        gui_State.gui_Callback = str2func(varargin{1});
+    end
+
+    if nargout
+        [varargout{1:nargout}] = gui_mainfcn(gui_State, varargin{:});
+    else
+        gui_mainfcn(gui_State, varargin{:});
+    end
+    % End initialization code - DO NOT EDIT
+
+
+    % --- Executes just before gui is made visible.
+    function gui_OpeningFcn(hObject, eventdata, handles, varargin)
+    % This function has no output args, see OutputFcn.
+    % hObject    handle to figure
+    % eventdata  reserved - to be defined in a future version of MATLAB
+    % handles    structure with handles and user data (see GUIDATA)
+    % varargin   command line arguments to gui (see VARARGIN)
+
+    % Choose default command line output for gui
+    handles.output = hObject;
+
+    % Initialize
+    handles.rv = 1;
+    handles.rt = 1;
+    handles.df = 0;
+
+    % Display text
+    handles.text_rv.String = ['速度比 rv = ',num2str(handles.rv)];
+    handles.text_rt.String = ['基音频率比 rt = ',num2str(handles.rt)];
+    handles.text_df.String = ['共振峰频率偏移量 df = ',num2str(handles.df)];
+
+    % Update handles structure
+    guidata(hObject, handles);
+
+    % UIWAIT makes gui wait for user response (see UIRESUME)
+    % uiwait(handles.figure1);
+
+
+    % --- Outputs from this function are returned to the command line.
+    function varargout = gui_OutputFcn(hObject, eventdata, handles) 
+    % varargout  cell array for returning output args (see VARARGOUT);
+    % hObject    handle to figure
+    % eventdata  reserved - to be defined in a future version of MATLAB
+    % handles    structure with handles and user data (see GUIDATA)
+
+    % Get default command line output from handles structure
+    varargout{1} = handles.output;
+
+
+    % --- Executes on slider movement.
+    function slider_rv_Callback(hObject, eventdata, handles)
+    % hObject    handle to slider_rv (see GCBO)
+    % eventdata  reserved - to be defined in a future version of MATLAB
+    % handles    structure with handles and user data (see GUIDATA)
+
+    % Hints: get(hObject,'Value') returns position of slider
+    %        get(hObject,'Min') and get(hObject,'Max') to determine range of slider
+
+    handles.rv = get(hObject,'Value');
+    handles.text_rv.String = ['速度比 rv = ',num2str(handles.rv)];
+
+    guidata(hObject,handles);
+
+    % --- Executes during object creation, after setting all properties.
+    function slider_rv_CreateFcn(hObject, eventdata, handles)
+    % hObject    handle to slider_rv (see GCBO)
+    % eventdata  reserved - to be defined in a future version of MATLAB
+    % handles    empty - handles not created until after all CreateFcns called
+
+    % Hint: slider controls usually have a light gray background.
+    if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+        set(hObject,'BackgroundColor',[.9 .9 .9]);
+    end
+
+
+    % --- Executes on slider movement.
+    function slider_rt_Callback(hObject, eventdata, handles)
+    % hObject    handle to slider_rt (see GCBO)
+    % eventdata  reserved - to be defined in a future version of MATLAB
+    % handles    structure with handles and user data (see GUIDATA)
+
+    % Hints: get(hObject,'Value') returns position of slider
+    %        get(hObject,'Min') and get(hObject,'Max') to determine range of slider
+
+    handles.rt = get(hObject,'Value');
+    handles.text_rt.String = ['基音频率比 rt = ',num2str(handles.rt)];
+
+    guidata(hObject,handles);
+
+    % --- Executes during object creation, after setting all properties.
+    function slider_rt_CreateFcn(hObject, eventdata, handles)
+    % hObject    handle to slider_rt (see GCBO)
+    % eventdata  reserved - to be defined in a future version of MATLAB
+    % handles    empty - handles not created until after all CreateFcns called
+
+    % Hint: slider controls usually have a light gray background.
+    if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+        set(hObject,'BackgroundColor',[.9 .9 .9]);
+    end
+
+
+    % --- Executes on slider movement.
+    function slider_df_Callback(hObject, eventdata, handles)
+    % hObject    handle to slider_df (see GCBO)
+    % eventdata  reserved - to be defined in a future version of MATLAB
+    % handles    structure with handles and user data (see GUIDATA)
+
+    % Hints: get(hObject,'Value') returns position of slider
+    %        get(hObject,'Min') and get(hObject,'Max') to determine range of slider
+
+    handles.df = get(hObject,'Value');
+    handles.text_df.String = ['共振峰频率偏移量 df = ',num2str(handles.df)];
+
+    guidata(hObject,handles);
+
+    % --- Executes during object creation, after setting all properties.
+    function slider_df_CreateFcn(hObject, eventdata, handles)
+    % hObject    handle to slider_df (see GCBO)
+    % eventdata  reserved - to be defined in a future version of MATLAB
+    % handles    empty - handles not created until after all CreateFcns called
+
+    % Hint: slider controls usually have a light gray background.
+    if isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
+        set(hObject,'BackgroundColor',[.9 .9 .9]);
+    end
+
+
+    % --- Executes on button press in button_sound.
+    function button_sound_Callback(hObject, eventdata, handles)
+    % hObject    handle to button_sound (see GCBO)
+    % eventdata  reserved - to be defined in a future version of MATLAB
+    % handles    structure with handles and user data (see GUIDATA)
+
+    handles.axes1 = speechproc1(handles.rv,handles.rt,handles.df);
+
+    guidata(hObject,handles);
+    ```
+
+    **效果如下**
+
+    ![gui](pic/gui.png)
+
+    * 拖动滑块即可改变参数
+
+    * 按下`Sound`键可以听到声音, 并绘制出波形
 

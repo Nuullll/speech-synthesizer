@@ -1,4 +1,4 @@
-function speechproc1(rv,rt,df)
+function H = speechproc1(rv,rt,df)
 %speechproc1(rv,rt,df)
 %输入:
 %   <double>rv: 调速比
@@ -47,7 +47,7 @@ function speechproc1(rv,rt,df)
         
         % 变速变调
         FL_v = round(FL/rv);        % change velocity
-        PT_t = round(PT*rt);        % change tone
+        PT_t = round(PT/rt);        % change tone
         A_t = changetone(A,df,8000);% change predict sys
         
         if n == 3                   % first loop
@@ -74,11 +74,8 @@ function speechproc1(rv,rt,df)
     s = normalize(s);
     s_syn = normalize(s_syn);
     
-    sound([s;s_syn],8000);
-    figure;
-    subplot(2,1,1);plot(s);title('原声');
-    subplot(2,1,2);plot(s_syn);title(['合成语音(速度比rv=',num2str(rv),...
-        ', 基音频率比rt=',num2str(rt),', 共振峰频率偏移df=',num2str(df),')']);
+    sound(s_syn,8000);
+    H = plot(s_syn);title('"电灯比油灯进步多了"');
     
 return
 
