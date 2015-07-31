@@ -1,9 +1,0 @@
-function A = changetone(poly,rf)
-%A = changetong(poly,rf)
-%输入:
-%   <vector>poly: 传递函数的分母, 用于求极点
-%   <double
-
-
-end
-
