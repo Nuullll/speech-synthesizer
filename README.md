@@ -266,3 +266,74 @@ Homework No.2 for summer course: MATLAB
     * $e(n)$变化更陡峭剧烈, 而$s(n)$和$\hat{s}(n)$的变化相对缓慢
 
     * $e(n)$的局部峰值基本对应$s(n)$和$\hat{s}(n)$的局部峰值
+
+
+## 语音合成模型
+
+1. **(练习7)** 生成一个$f_s=8000\text{Hz}$抽样的持续时间$T=1\text{s}$的数字信号, 该信号是一个频率为$f=200\text{Hz}$的单位样值"串", 即 $$x(n)=\sum_{i=0}^{NS-1} \delta (n-iN)$$
+
+    则式中$N=\frac{f_s}{f}=40$, $NS=Tf=200$
+
+    单位样值"串"即每隔一定间隔$N$有一脉冲(幅度为1), 其余位置取值为0, 则可以通过以下方法生成$x(n)$ ([impulsestring.m](src/impulsestring.m))
+
+    ```matlab
+    function x = impulsestring(T,f,fs)
+    %Generate impulse string
+    %输入:
+    %   <double>T: 信号长度, 单位(秒)
+    %   <double>f: 冲激串频率
+    %   <double>fs: 采样频率
+    %输出:
+    %   <column vector>x: length(x)==round(T*fs), sum(x)==round(T*f)
+
+    x = zeros(round(T*fs),1);   % initialize x(n)
+    NS = round(T*f);            % NS
+    for i=0:NS-1
+        x(round(i*fs/f)+1) = 1;   % x(k) = 1 if (k-i*N == 0) else 0
+    end
+
+    end
+    ```
+
+    **注1:** 另一种生成方法是先利用`N=round(fs/f)`将`N`求出, 再以`N`为步长产生冲激, 但这样的结果不精确, 如当$314 \leq f \leq 326$时, 求得的$N$均为25, 产生的单位样值串频率均为320Hz, 误差在**2%**左右
+
+    **注2:** 上述方法产生的信号, 虽然相邻两冲激之间的间隔**不是恒定**(有$\pm 1$的浮动)的, 但从整体上看, 生成信号的频率更接近需求
+
+    **试听**
+
+    ```matlab
+    >> sound(impulsestring(1,200,fs),fs);
+    >> sound(impulsestring(1,300,fs),fs);
+    ```
+
+    * 略刺耳
+
+    * 300Hz单位样值串音调更高
+
+2. **(练习8)** 真实语音信号的基音周期总是随时间变化的. 我们首先将信号分成若干个10毫秒长的段, 假设每个段内基音周期固定不变, 但段和段之间则不同, 具体为 $$PT=80+5mod(m,50)$$
+
+    其中$PT$表示基因周期, $m$表示段序号, **相邻两脉冲的间隔由前一个脉冲所在的段序号决定**
+
+    生成时长为1秒钟的上述信号: 
+
+    ```matlab
+    x = zeros(8000,1);
+    cursor = 1;
+    m = 1;          % index of slice
+    while m <= 100
+        x(cursor) = 1;
+        cursor = cursor + 80 + 5*mod(m,50);     % next cursor
+        m = floor((cursor-1)/80) + 1;           % locate next cursor
+    end
+    stem(0:8000-1,x);
+    ```
+
+    ![基音周期变化的信号](pic/pitch-time-variant)
+
+    **试听**
+
+    * 生成的信号被均分为重复的两段, 每段内**音调逐渐降低**
+
+    * 不好听, **很压抑**
+
+3. **(练习9)** 
