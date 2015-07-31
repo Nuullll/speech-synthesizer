@@ -112,6 +112,16 @@ function speechproc()
         % s_syn_t((n-1)*FL+1:n*FL) = ...   将你计算得到的变调合成语音写在这里
         
     end
+    
+    % 保存所有文件
+    writespeech('exc.pcm',exc);
+    writespeech('rec.pcm',s_rec);
+    writespeech('exc_syn.pcm',exc_syn);
+    writespeech('syn.pcm',s_syn);
+    writespeech('exc_syn_t.pcm',exc_syn_t);
+    writespeech('syn_t.pcm',s_syn_t);
+    writespeech('exc_syn_v.pcm',exc_syn_v);
+    writespeech('syn_v.pcm',s_syn_v);
 
     % (6) 在此位置写程序，听一听 s ，exc 和 s_rec 有何区别，解释这种区别
     % 后面听语音的题目也都可以在这里写，不再做特别注明
@@ -152,15 +162,6 @@ function speechproc()
     subplot(3,1,2);plot(s_syn_v);title('合成信号(半速原调)');
     subplot(3,1,3);plot(s_syn_t);title('合成信号(原速升调)');
 
-    % 保存所有文件
-    writespeech('exc.pcm',exc);
-    writespeech('rec.pcm',s_rec);
-    writespeech('exc_syn.pcm',exc_syn);
-    writespeech('syn.pcm',s_syn);
-    writespeech('exc_syn_t.pcm',exc_syn_t);
-    writespeech('syn_t.pcm',s_syn_t);
-    writespeech('exc_syn_v.pcm',exc_syn_v);
-    writespeech('syn_v.pcm',s_syn_v);
 return
 
 % 从PCM文件中读入语音
