@@ -80,13 +80,19 @@ function speechproc()
 
     % (6) 在此位置写程序，听一听 s ，exc 和 s_rec 有何区别，解释这种区别
     % 后面听语音的题目也都可以在这里写，不再做特别注明
+    
+    % normalization
+    s = normalize(s);
+    exc = normalize(exc);
+    s_rec = normalize(s_rec);
+    
     sound([s;exc;s_rec],8000);
     figure(2);
     subplot(3,1,1);plot(s);title('原声');
-    subplot(3,1,2);plot(exc);title('激励信号');axis([0 14000 -5e4 5e4]);
+    subplot(3,1,2);plot(exc);title('激励信号');
     subplot(3,1,3);plot(s_rec);title('重建信号');
     figure(3);
-    plot(s,'k');axis([6400 6500 -2e4 2e4]);hold on
+    plot(s,'k');axis([6400 6500 -1 1]);hold on
     plot(exc,'r');
     plot(s_rec);hold off;
     legend('原声','激励信号','重建信号');title('片段对比');

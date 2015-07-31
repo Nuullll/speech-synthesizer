@@ -229,13 +229,18 @@ Homework No.2 for summer course: MATLAB
 6. 对比$e(n)$, $s(n)$以及$\hat{s}(n)$信号
 
     ```matlab
+    % normalization
+    s = normalize(s);
+    exc = normalize(exc);
+    s_rec = normalize(s_rec);
+    
     sound([s;exc;s_rec],8000);
     figure(2);
     subplot(3,1,1);plot(s);title('原声');
-    subplot(3,1,2);plot(exc);title('激励信号');axis([0 14000 -5e4 5e4]);
+    subplot(3,1,2);plot(exc);title('激励信号');
     subplot(3,1,3);plot(s_rec);title('重建信号');
     figure(3);
-    plot(s,'k');axis([6400 6500 -2e4 2e4]);hold on
+    plot(s,'k');axis([6400 6500 -1 1]);hold on
     plot(exc,'r');
     plot(s_rec);hold off;
     legend('原声','激励信号','重建信号');title('片段对比');
@@ -243,15 +248,13 @@ Homework No.2 for summer course: MATLAB
 
     **听觉感受**
 
-    * $s(n)$和$\hat{s}(n)$听不出区别
+    * $s(n)$和$\hat{s}(n)$听不出区别, 清晰明了
 
-    * $e(n)$杂音更大, 被淹没在噪声中; 若没有对语音内容的**先验知识**, 很难分辨出语音的内容
+    * $e(n)$有杂音, 但语音内容基本可以辨认
 
     **整体波形**
 
     ![整体](pic/whole.png)
-
-    * 激励信号$e(n)$整体幅度小于$s(n)$和$\hat{s}(n)$
 
     * $s(n)$和$\hat{s}(n)$波形包络基本一致, $e(n)$则不同
 
@@ -336,4 +339,7 @@ Homework No.2 for summer course: MATLAB
 
     * 不好听, **很压抑**
 
-3. **(练习9)** 
+3. **(练习9)** 用`filter`将**(8)**中的激励信号$e(n)$输入到**(1)**的系统中计算输出$s(n)$
+
+    ```matlab
+    y = 
