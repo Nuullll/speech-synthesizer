@@ -1,0 +1,1835 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>body {
+  width: 45em;
+  border: 1px solid #ddd;
+  outline: 1300px solid #fff;
+  margin: 16px auto;
+}
+
+body .markdown-body
+{
+  padding: 30px;
+}
+
+@font-face {
+  font-family: octicons-anchor;
+  src: url(data:font/woff;charset=utf-8;base64,d09GRgABAAAAAAYcAA0AAAAACjQAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAABGRlRNAAABMAAAABwAAAAca8vGTk9TLzIAAAFMAAAARAAAAFZG1VHVY21hcAAAAZAAAAA+AAABQgAP9AdjdnQgAAAB0AAAAAQAAAAEACICiGdhc3AAAAHUAAAACAAAAAj//wADZ2x5ZgAAAdwAAADRAAABEKyikaNoZWFkAAACsAAAAC0AAAA2AtXoA2hoZWEAAALgAAAAHAAAACQHngNFaG10eAAAAvwAAAAQAAAAEAwAACJsb2NhAAADDAAAAAoAAAAKALIAVG1heHAAAAMYAAAAHwAAACABEAB2bmFtZQAAAzgAAALBAAAFu3I9x/Nwb3N0AAAF/AAAAB0AAAAvaoFvbwAAAAEAAAAAzBdyYwAAAADP2IQvAAAAAM/bz7t4nGNgZGFgnMDAysDB1Ml0hoGBoR9CM75mMGLkYGBgYmBlZsAKAtJcUxgcPsR8iGF2+O/AEMPsznAYKMwIkgMA5REMOXicY2BgYGaAYBkGRgYQsAHyGMF8FgYFIM0ChED+h5j//yEk/3KoSgZGNgYYk4GRCUgwMaACRoZhDwCs7QgGAAAAIgKIAAAAAf//AAJ4nHWMMQrCQBBF/0zWrCCIKUQsTDCL2EXMohYGSSmorScInsRGL2DOYJe0Ntp7BK+gJ1BxF1stZvjz/v8DRghQzEc4kIgKwiAppcA9LtzKLSkdNhKFY3HF4lK69ExKslx7Xa+vPRVS43G98vG1DnkDMIBUgFN0MDXflU8tbaZOUkXUH0+U27RoRpOIyCKjbMCVejwypzJJG4jIwb43rfl6wbwanocrJm9XFYfskuVC5K/TPyczNU7b84CXcbxks1Un6H6tLH9vf2LRnn8Ax7A5WQAAAHicY2BkYGAA4teL1+yI57f5ysDNwgAC529f0kOmWRiYVgEpDgYmEA8AUzEKsQAAAHicY2BkYGB2+O/AEMPCAAJAkpEBFbAAADgKAe0EAAAiAAAAAAQAAAAEAAAAAAAAKgAqACoAiAAAeJxjYGRgYGBhsGFgYgABEMkFhAwM/xn0QAIAD6YBhwB4nI1Ty07cMBS9QwKlQapQW3VXySvEqDCZGbGaHULiIQ1FKgjWMxknMfLEke2A+IJu+wntrt/QbVf9gG75jK577Lg8K1qQPCfnnnt8fX1NRC/pmjrk/zprC+8D7tBy9DHgBXoWfQ44Av8t4Bj4Z8CLtBL9CniJluPXASf0Lm4CXqFX8Q84dOLnMB17N4c7tBo1AS/Qi+hTwBH4rwHHwN8DXqQ30XXAS7QaLwSc0Gn8NuAVWou/gFmnjLrEaEh9GmDdDGgL3B4JsrRPDU2hTOiMSuJUIdKQQayiAth69r6akSSFqIJuA19TrzCIaY8sIoxyrNIrL//pw7A2iMygkX5vDj+G+kuoLdX4GlGK/8Lnlz6/h9MpmoO9rafrz7ILXEHHaAx95s9lsI7AHNMBWEZHULnfAXwG9/ZqdzLI08iuwRloXE8kfhXYAvE23+23DU3t626rbs8/8adv+9DWknsHp3E17oCf+Z48rvEQNZ78paYM38qfk3v/u3l3u3GXN2Dmvmvpf1Srwk3pB/VSsp512bA/GG5i2WJ7wu430yQ5K3nFGiOqgtmSB5pJVSizwaacmUZzZhXLlZTq8qGGFY2YcSkqbth6aW1tRmlaCFs2016m5qn36SbJrqosG4uMV4aP2PHBmB3tjtmgN2izkGQyLWprekbIntJFing32a5rKWCN/SdSoga45EJykyQ7asZvHQ8PTm6cslIpwyeyjbVltNikc2HTR7YKh9LBl9DADC0U/jLcBZDKrMhUBfQBvXRzLtFtjU9eNHKin0x5InTqb8lNpfKv1s1xHzTXRqgKzek/mb7nB8RZTCDhGEX3kK/8Q75AmUM/eLkfA+0Hi908Kx4eNsMgudg5GLdRD7a84npi+YxNr5i5KIbW5izXas7cHXIMAau1OueZhfj+cOcP3P8MNIWLyYOBuxL6DRylJ4cAAAB4nGNgYoAALjDJyIAOWMCiTIxMLDmZedkABtIBygAAAA==) format('woff');
+}
+
+.markdown-body {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  color: #333;
+  overflow: hidden;
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+.markdown-body a {
+  background: transparent;
+}
+
+.markdown-body a:active,
+.markdown-body a:hover {
+  outline: 0;
+}
+
+.markdown-body strong {
+  font-weight: bold;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+.markdown-body img {
+  border: 0;
+}
+
+.markdown-body hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+.markdown-body pre {
+  overflow: auto;
+}
+
+.markdown-body code,
+.markdown-body kbd,
+.markdown-body pre {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+.markdown-body input {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+.markdown-body html input[disabled] {
+  cursor: default;
+}
+
+.markdown-body input {
+  line-height: normal;
+}
+
+.markdown-body input[type="checkbox"] {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.markdown-body table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.markdown-body td,
+.markdown-body th {
+  padding: 0;
+}
+
+.markdown-body * {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body input {
+  font: 13px/1.4 Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.markdown-body a {
+  color: #4183c4;
+  text-decoration: none;
+}
+
+.markdown-body a:hover,
+.markdown-body a:focus,
+.markdown-body a:active {
+  text-decoration: underline;
+}
+
+.markdown-body hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.markdown-body hr:before {
+  display: table;
+  content: "";
+}
+
+.markdown-body hr:after {
+  display: table;
+  clear: both;
+  content: "";
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  line-height: 1.1;
+}
+
+.markdown-body h1 {
+  font-size: 30px;
+}
+
+.markdown-body h2 {
+  font-size: 21px;
+}
+
+.markdown-body h3 {
+  font-size: 16px;
+}
+
+.markdown-body h4 {
+  font-size: 14px;
+}
+
+.markdown-body h5 {
+  font-size: 12px;
+}
+
+.markdown-body h6 {
+  font-size: 11px;
+}
+
+.markdown-body blockquote {
+  margin: 0;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body ol ol,
+.markdown-body ul ol {
+  list-style-type: lower-roman;
+}
+
+.markdown-body ul ul ol,
+.markdown-body ul ol ol,
+.markdown-body ol ul ol,
+.markdown-body ol ol ol {
+  list-style-type: lower-alpha;
+}
+
+.markdown-body dd {
+  margin-left: 0;
+}
+
+.markdown-body code {
+  font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+  font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+
+.markdown-body .octicon {
+  font: normal normal 16px octicons-anchor;
+  line-height: 1;
+  display: inline-block;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.markdown-body .octicon-link:before {
+  content: '\f05c';
+}
+
+.markdown-body>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+.markdown-body .anchor {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  padding-right: 6px;
+  padding-left: 30px;
+  margin-left: -30px;
+}
+
+.markdown-body .anchor:focus {
+  outline: none;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  position: relative;
+  margin-top: 1em;
+  margin-bottom: 16px;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+.markdown-body h1 .octicon-link,
+.markdown-body h2 .octicon-link,
+.markdown-body h3 .octicon-link,
+.markdown-body h4 .octicon-link,
+.markdown-body h5 .octicon-link,
+.markdown-body h6 .octicon-link {
+  display: none;
+  color: #000;
+  vertical-align: middle;
+}
+
+.markdown-body h1:hover .anchor,
+.markdown-body h2:hover .anchor,
+.markdown-body h3:hover .anchor,
+.markdown-body h4:hover .anchor,
+.markdown-body h5:hover .anchor,
+.markdown-body h6:hover .anchor {
+  padding-left: 8px;
+  margin-left: -30px;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.markdown-body h1:hover .anchor .octicon-link,
+.markdown-body h2:hover .anchor .octicon-link,
+.markdown-body h3:hover .anchor .octicon-link,
+.markdown-body h4:hover .anchor .octicon-link,
+.markdown-body h5:hover .anchor .octicon-link,
+.markdown-body h6:hover .anchor .octicon-link {
+  display: inline-block;
+}
+
+.markdown-body h1 {
+  padding-bottom: 0.3em;
+  font-size: 2.25em;
+  line-height: 1.2;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.75em;
+  line-height: 1.225;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h3 {
+  font-size: 1.5em;
+  line-height: 1.43;
+}
+
+.markdown-body h4 {
+  font-size: 1.25em;
+}
+
+.markdown-body h5 {
+  font-size: 1em;
+}
+
+.markdown-body h6 {
+  font-size: 1em;
+  color: #777;
+}
+
+.markdown-body p,
+.markdown-body blockquote,
+.markdown-body ul,
+.markdown-body ol,
+.markdown-body dl,
+.markdown-body table,
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.markdown-body hr {
+  height: 4px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: #e7e7e7;
+  border: 0 none;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding-left: 2em;
+}
+
+.markdown-body ul ul,
+.markdown-body ul ol,
+.markdown-body ol ol,
+.markdown-body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body li>p {
+  margin-top: 16px;
+}
+
+.markdown-body dl {
+  padding: 0;
+}
+
+.markdown-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.markdown-body blockquote {
+  padding: 0 15px;
+  color: #777;
+  border-left: 4px solid #ddd;
+}
+
+.markdown-body blockquote>:first-child {
+  margin-top: 0;
+}
+
+.markdown-body blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  word-break: normal;
+  word-break: keep-all;
+}
+
+.markdown-body table th {
+  font-weight: bold;
+}
+
+.markdown-body table th,
+.markdown-body table td {
+  padding: 6px 13px;
+  border: 1px solid #ddd;
+}
+
+.markdown-body table tr {
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+.markdown-body img {
+  max-width: 100%;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body code {
+  padding: 0;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(0,0,0,0.04);
+  border-radius: 3px;
+}
+
+.markdown-body code:before,
+.markdown-body code:after {
+  letter-spacing: -0.2em;
+  content: "\00a0";
+}
+
+.markdown-body pre>code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.markdown-body .highlight {
+  margin-bottom: 16px;
+}
+
+.markdown-body .highlight pre,
+.markdown-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+}
+
+.markdown-body .highlight pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.markdown-body pre {
+  word-wrap: normal;
+}
+
+.markdown-body pre code {
+  display: inline;
+  max-width: initial;
+  padding: 0;
+  margin: 0;
+  overflow: initial;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+
+.markdown-body pre code:before,
+.markdown-body pre code:after {
+  content: normal;
+}
+
+.markdown-body .highlight {
+  background: #fff;
+}
+
+.markdown-body .highlight .h {
+  color: #333;
+  font-style: normal;
+  font-weight: normal;
+}
+
+.markdown-body .highlight .mf,
+.markdown-body .highlight .mh,
+.markdown-body .highlight .mi,
+.markdown-body .highlight .mo,
+.markdown-body .highlight .il,
+.markdown-body .highlight .m {
+  color: #945277;
+}
+
+.markdown-body .highlight .s,
+.markdown-body .highlight .sb,
+.markdown-body .highlight .sc,
+.markdown-body .highlight .sd,
+.markdown-body .highlight .s2,
+.markdown-body .highlight .se,
+.markdown-body .highlight .sh,
+.markdown-body .highlight .si,
+.markdown-body .highlight .sx,
+.markdown-body .highlight .s1 {
+  color: #df5000;
+}
+
+.markdown-body .highlight .kc,
+.markdown-body .highlight .kd,
+.markdown-body .highlight .kn,
+.markdown-body .highlight .kp,
+.markdown-body .highlight .kr,
+.markdown-body .highlight .kt,
+.markdown-body .highlight .k,
+.markdown-body .highlight .o {
+  font-weight: bold;
+}
+
+.markdown-body .highlight .kt {
+  color: #458;
+}
+
+.markdown-body .highlight .c,
+.markdown-body .highlight .cm,
+.markdown-body .highlight .c1 {
+  color: #998;
+  font-style: italic;
+}
+
+.markdown-body .highlight .cp,
+.markdown-body .highlight .cs,
+.markdown-body .highlight .cp .h {
+  color: #999;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .cs {
+  font-style: italic;
+}
+
+.markdown-body .highlight .n {
+  color: #333;
+}
+
+.markdown-body .highlight .na,
+.markdown-body .highlight .nv,
+.markdown-body .highlight .vc,
+.markdown-body .highlight .vg,
+.markdown-body .highlight .vi {
+  color: #008080;
+}
+
+.markdown-body .highlight .nb {
+  color: #0086B3;
+}
+
+.markdown-body .highlight .nc {
+  color: #458;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .no {
+  color: #094e99;
+}
+
+.markdown-body .highlight .ni {
+  color: #800080;
+}
+
+.markdown-body .highlight .ne {
+  color: #990000;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .nf {
+  color: #945277;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .nn {
+  color: #555;
+}
+
+.markdown-body .highlight .nt {
+  color: #000080;
+}
+
+.markdown-body .highlight .err {
+  color: #a61717;
+  background-color: #e3d2d2;
+}
+
+.markdown-body .highlight .gd {
+  color: #000;
+  background-color: #fdd;
+}
+
+.markdown-body .highlight .gd .x {
+  color: #000;
+  background-color: #faa;
+}
+
+.markdown-body .highlight .ge {
+  font-style: italic;
+}
+
+.markdown-body .highlight .gr {
+  color: #aa0000;
+}
+
+.markdown-body .highlight .gh {
+  color: #999;
+}
+
+.markdown-body .highlight .gi {
+  color: #000;
+  background-color: #dfd;
+}
+
+.markdown-body .highlight .gi .x {
+  color: #000;
+  background-color: #afa;
+}
+
+.markdown-body .highlight .go {
+  color: #888;
+}
+
+.markdown-body .highlight .gp {
+  color: #555;
+}
+
+.markdown-body .highlight .gs {
+  font-weight: bold;
+}
+
+.markdown-body .highlight .gu {
+  color: #800080;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .gt {
+  color: #aa0000;
+}
+
+.markdown-body .highlight .ow {
+  font-weight: bold;
+}
+
+.markdown-body .highlight .w {
+  color: #bbb;
+}
+
+.markdown-body .highlight .sr {
+  color: #017936;
+}
+
+.markdown-body .highlight .ss {
+  color: #8b467f;
+}
+
+.markdown-body .highlight .bp {
+  color: #999;
+}
+
+.markdown-body .highlight .gc {
+  color: #999;
+  background-color: #EAF2F5;
+}
+
+.markdown-body kbd {
+  background-color: #e7e7e7;
+  background-image: -webkit-linear-gradient(#fefefe, #e7e7e7);
+  background-image: linear-gradient(#fefefe, #e7e7e7);
+  background-repeat: repeat-x;
+  display: inline-block;
+  padding: 3px 5px;
+  font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  line-height: 10px;
+  color: #000;
+  border: 1px solid #cfcfcf;
+  border-radius: 2px;
+}
+
+.markdown-body .highlight .pl-coc,
+.markdown-body .highlight .pl-entm,
+.markdown-body .highlight .pl-eoa,
+.markdown-body .highlight .pl-mai .pl-sf,
+.markdown-body .highlight .pl-pdv,
+.markdown-body .highlight .pl-sc,
+.markdown-body .highlight .pl-sr,
+.markdown-body .highlight .pl-v,
+.markdown-body .highlight .pl-vpf {
+  color: #0086b3;
+}
+
+.markdown-body .highlight .pl-eoac,
+.markdown-body .highlight .pl-mdht,
+.markdown-body .highlight .pl-mi1,
+.markdown-body .highlight .pl-mri,
+.markdown-body .highlight .pl-va,
+.markdown-body .highlight .pl-vpu {
+  color: #008080;
+}
+
+.markdown-body .highlight .pl-c,
+.markdown-body .highlight .pl-pdc {
+  color: #b4b7b4;
+  font-style: italic;
+}
+
+.markdown-body .highlight .pl-k,
+.markdown-body .highlight .pl-ko,
+.markdown-body .highlight .pl-kolp,
+.markdown-body .highlight .pl-mc,
+.markdown-body .highlight .pl-mr,
+.markdown-body .highlight .pl-ms,
+.markdown-body .highlight .pl-s,
+.markdown-body .highlight .pl-sok,
+.markdown-body .highlight .pl-st {
+  color: #6e5494;
+}
+
+.markdown-body .highlight .pl-ef,
+.markdown-body .highlight .pl-enf,
+.markdown-body .highlight .pl-enm,
+.markdown-body .highlight .pl-entc,
+.markdown-body .highlight .pl-eoi,
+.markdown-body .highlight .pl-sf,
+.markdown-body .highlight .pl-smc {
+  color: #d12089;
+}
+
+.markdown-body .highlight .pl-ens,
+.markdown-body .highlight .pl-eoai,
+.markdown-body .highlight .pl-kos,
+.markdown-body .highlight .pl-mh .pl-pdh,
+.markdown-body .highlight .pl-mp,
+.markdown-body .highlight .pl-pde,
+.markdown-body .highlight .pl-stp {
+  color: #458;
+}
+
+.markdown-body .highlight .pl-enti {
+  color: #d12089;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .pl-cce,
+.markdown-body .highlight .pl-enc,
+.markdown-body .highlight .pl-kou,
+.markdown-body .highlight .pl-mq {
+  color: #f93;
+}
+
+.markdown-body .highlight .pl-mp1 .pl-sf {
+  color: #458;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .pl-cos,
+.markdown-body .highlight .pl-ent,
+.markdown-body .highlight .pl-md,
+.markdown-body .highlight .pl-mdhf,
+.markdown-body .highlight .pl-ml,
+.markdown-body .highlight .pl-pdc1,
+.markdown-body .highlight .pl-pds,
+.markdown-body .highlight .pl-s1,
+.markdown-body .highlight .pl-scp,
+.markdown-body .highlight .pl-sol {
+  color: #df5000;
+}
+
+.markdown-body .highlight .pl-c1,
+.markdown-body .highlight .pl-cn,
+.markdown-body .highlight .pl-pse,
+.markdown-body .highlight .pl-pse .pl-s2,
+.markdown-body .highlight .pl-vi {
+  color: #a31515;
+}
+
+.markdown-body .highlight .pl-mb,
+.markdown-body .highlight .pl-pdb {
+  color: #df5000;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .pl-mi,
+.markdown-body .highlight .pl-pdi {
+  color: #6e5494;
+  font-style: italic;
+}
+
+.markdown-body .highlight .pl-ms1 {
+  background-color: #f5f5f5;
+}
+
+.markdown-body .highlight .pl-mdh,
+.markdown-body .highlight .pl-mdi {
+  font-weight: bold;
+}
+
+.markdown-body .highlight .pl-mdr {
+  color: #0086b3;
+  font-weight: bold;
+}
+
+.markdown-body .highlight .pl-s2 {
+  color: #333;
+}
+
+.markdown-body .highlight .pl-ii {
+  background-color: #df5000;
+  color: #fff;
+}
+
+.markdown-body .highlight .pl-ib {
+  background-color: #f93;
+}
+
+.markdown-body .highlight .pl-id {
+  background-color: #a31515;
+  color: #fff;
+}
+
+.markdown-body .highlight .pl-iu {
+  background-color: #b4b7b4;
+}
+
+.markdown-body .highlight .pl-mo {
+  color: #969896;
+}
+
+.markdown-body .task-list-item {
+  list-style-type: none;
+}
+
+.markdown-body .task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+.markdown-body .task-list-item input {
+  float: left;
+  margin: 0.3em 0 0.25em -1.6em;
+  vertical-align: middle;
+}</style><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+MathJax.Hub.Config({
+  config: ["MMLorHTML.js"],
+  extensions: ["tex2jax.js"],
+  jax: ["input/TeX"],
+  tex2jax: {
+    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+    displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+    processEscapes: false
+  },
+  TeX: {
+    extensions: ["AMSmath.js", "AMSsymbols.js"],
+    TagSide: "right",
+    TagIndent: ".8em",
+    MultLineWidth: "85%",
+    equationNumbers: {
+      autoNumber: "AMS",
+    },
+    unicode: {
+      fonts: "STIXGeneral,'Arial Unicode MS'"
+    }
+  },
+  showProcessingMessages: false
+});
+</script>
+<title>README</title></head><body><article class="markdown-body"><h1>
+<a id="user-content-语音合成大作业" class="anchor" href="#%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90%E5%A4%A7%E4%BD%9C%E4%B8%9A" aria-hidden="true"><span class="octicon octicon-link"></span></a>语音合成大作业</h1>
+
+<p>郭一隆 无36 2013011189</p>
+
+<h1>
+<a id="user-content-原创性声明" class="anchor" href="#%E5%8E%9F%E5%88%9B%E6%80%A7%E5%A3%B0%E6%98%8E" aria-hidden="true"><span class="octicon octicon-link"></span></a>原创性声明</h1>
+
+<p><strong>完全原创</strong></p>
+
+<h2>
+<a id="user-content-语音预测模型" class="anchor" href="#%E8%AF%AD%E9%9F%B3%E9%A2%84%E6%B5%8B%E6%A8%A1%E5%9E%8B" aria-hidden="true"><span class="octicon octicon-link"></span></a>语音预测模型</h2>
+
+<ol>
+<li>
+<p>给定 $$e(n)=s(n)-a_1s(n-1)-a_2s(n-2)$$</p>
+
+<ol>
+<li><p>假设$e(n)$是输入信号, $s(n)$是输出信号, 则上述滤波器的传递函数为 $$H(z)=\frac{z^2}{z^2-a_1z-a_2}$$</p></li>
+<li>
+<p>如果$a_1=1.3789, a_2=-0.9506$, 则利用<code>[Z,P,K]=tf2zp(b,a)</code>或<code>roots(poly)</code>等函数可求出系统极点为 $$p_{1,2}=0.6895\pm 0.6894j=0.9750e^{\pm j0.7854}$$</p>
+
+<p>根据共振峰频率的定义 $$f=\frac{\omega}{2\pi}=\frac{\Omega}{2\pi T}=\frac{\Omega f_s}{2\pi}=\frac{Arg(p)}{2\pi}f_s$$</p>
+
+<p>取$f_s=8000\text{Hz}$, 求得<strong>共振峰频率</strong>(Formant Frequency) $f_f=999.94\text{Hz}$</p>
+</li>
+<li>
+<p>绘制<strong>零极点图</strong>, <code>zplane(Z,P)</code></p>
+
+<p><a href="pic/zplane.png" target="_blank"><img src="pic/zplane.png" alt="零极点图" style="max-width:100%;"></a></p>
+</li>
+<li>
+<p>绘制<strong>频率响应</strong>, <code>freqz(b,a,512,fs)</code></p>
+
+<p><a href="pic/freqz.png" target="_blank"><img src="pic/freqz.png" alt="频率响应" style="max-width:100%;"></a></p>
+
+<p>从频率响应图中也可直观地看出<strong>共振峰频率</strong>在1000Hz附近</p>
+</li>
+<li>
+<p>绘制<strong>单位样值响应</strong></p>
+
+<ul>
+<li>
+<p><code>impz(b,a,512,fs)</code></p>
+
+<p><a href="pic/impz.png" target="_blank"><img src="pic/impz.png" alt="impz" style="max-width:100%;"></a></p>
+</li>
+<li>
+<p><code>filter</code></p>
+
+<div class="highlight highlight-matlab"><pre>x = <span class="pl-k">zeros</span>(<span class="pl-c1">1</span>,<span class="pl-c1">512</span>);
+x(<span class="pl-c1">1</span>) = <span class="pl-c1">1</span>;
+y = <span class="pl-k">filter</span>(b,a,x);
+<span class="pl-c1">stem</span>(<span class="pl-c1">0</span><span class="pl-k">:</span><span class="pl-c1">1</span><span class="pl-k">/</span>fs<span class="pl-k">:</span><span class="pl-c1">511</span><span class="pl-k">/</span>fs,y);</pre></div>
+
+<p><a href="pic/filter.png" target="_blank"><img src="pic/filter.png" alt="filter" style="max-width:100%;"></a></p>
+
+<p><strong>与impz画出的结果相同</strong></p>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>
+<p>阅读<a href="src/speechproc.m">speechproc.m</a></p>
+
+<div class="highlight highlight-matlab"><pre><span class="pl-k">function</span> <span class="pl-en">speechproc</span>()
+
+    <span class="pl-c">% 定义常数</span>
+    FL = <span class="pl-c1">80</span>;                <span class="pl-c">% 帧长</span>
+    WL = <span class="pl-c1">240</span>;               <span class="pl-c">% 窗长</span>
+    P = <span class="pl-c1">10</span>;                 <span class="pl-c">% 预测系数个数</span>
+    s = readspeech(<span class="pl-s"><span class="pl-pds">'</span>voice.pcm<span class="pl-pds">'</span></span>,<span class="pl-c1">100000</span>);             <span class="pl-c">% 载入语音s</span>
+    L = <span class="pl-k">length</span>(s);          <span class="pl-c">% 读入语音长度</span>
+    FN = <span class="pl-k">floor</span>(L<span class="pl-k">/</span>FL)<span class="pl-k">-</span><span class="pl-c1">2</span>;     <span class="pl-c">% 计算帧数</span>
+    <span class="pl-c">% 预测和重建滤波器</span>
+    exc = <span class="pl-k">zeros</span>(L,<span class="pl-c1">1</span>);       <span class="pl-c">% 激励信号（预测误差）</span>
+    zi_pre = <span class="pl-k">zeros</span>(P,<span class="pl-c1">1</span>);    <span class="pl-c">% 预测滤波器的状态</span>
+    s_rec = <span class="pl-k">zeros</span>(L,<span class="pl-c1">1</span>);     <span class="pl-c">% 重建语音</span>
+    zi_rec = <span class="pl-k">zeros</span>(P,<span class="pl-c1">1</span>);
+    <span class="pl-c">% 合成滤波器</span>
+    exc_syn = <span class="pl-k">zeros</span>(L,<span class="pl-c1">1</span>);   <span class="pl-c">% 合成的激励信号（脉冲串）</span>
+    s_syn = <span class="pl-k">zeros</span>(L,<span class="pl-c1">1</span>);     <span class="pl-c">% 合成语音</span>
+    <span class="pl-c">% 变调不变速滤波器</span>
+    exc_syn_t = <span class="pl-k">zeros</span>(L,<span class="pl-c1">1</span>);   <span class="pl-c">% 合成的激励信号（脉冲串）</span>
+    s_syn_t = <span class="pl-k">zeros</span>(L,<span class="pl-c1">1</span>);     <span class="pl-c">% 合成语音</span>
+    <span class="pl-c">% 变速不变调滤波器（假设速度减慢一倍）</span>
+    exc_syn_v = <span class="pl-k">zeros</span>(<span class="pl-c1">2</span><span class="pl-k">*</span>L,<span class="pl-c1">1</span>);   <span class="pl-c">% 合成的激励信号（脉冲串）</span>
+    s_syn_v = <span class="pl-k">zeros</span>(<span class="pl-c1">2</span><span class="pl-k">*</span>L,<span class="pl-c1">1</span>);     <span class="pl-c">% 合成语音</span>
+
+    hw = <span class="pl-c1">hamming</span>(WL);       <span class="pl-c">% 汉明窗</span>
+
+    <span class="pl-c">% 依次处理每帧语音</span>
+    <span class="pl-k">for</span> n = <span class="pl-c1">3</span><span class="pl-k">:</span>FN
+
+        <span class="pl-c">% 计算预测系数（不需要掌握）</span>
+        s_w = s(n<span class="pl-k">*</span>FL<span class="pl-k">-</span>WL<span class="pl-k">+</span><span class="pl-c1">1</span><span class="pl-k">:</span>n<span class="pl-k">*</span>FL)<span class="pl-k">.*</span>hw;    <span class="pl-c">%汉明窗加权后的语音</span>
+        [A E] = <span class="pl-c1">lpc</span>(s_w, P);            <span class="pl-c">%用线性预测法计算P个预测系数</span>
+                                        <span class="pl-c">% A是预测系数，E会被用来计算合成激励的能量</span>
+
+        <span class="pl-k">if</span> n<span class="pl-k"> == </span><span class="pl-c1">27</span>
+        <span class="pl-c">% (3) 在此位置写程序，观察预测系统的零极点图</span>
+
+        <span class="pl-k">end</span>
+
+        s_f = s((n<span class="pl-k">-</span><span class="pl-c1">1</span>)<span class="pl-k">*</span>FL<span class="pl-k">+</span><span class="pl-c1">1</span><span class="pl-k">:</span>n<span class="pl-k">*</span>FL);       <span class="pl-c">% 本帧语音，下面就要对它做处理</span>
+
+        <span class="pl-c">% (4) 在此位置写程序，用filter函数s_f计算激励，注意保持滤波器状态</span>
+
+
+        <span class="pl-c">% exc((n-1)*FL+1:n*FL) = ... 将你计算得到的激励写在这里</span>
+
+        <span class="pl-c">% (5) 在此位置写程序，用filter函数和exc重建语音，注意保持滤波器状态</span>
+
+
+        <span class="pl-c">% s_rec((n-1)*FL+1:n*FL) = ... 将你计算得到的重建语音写在这里</span>
+
+        <span class="pl-c">% 注意下面只有在得到exc后才会计算正确</span>
+        s_Pitch = exc(n<span class="pl-k">*</span>FL<span class="pl-k">-</span><span class="pl-c1">222</span><span class="pl-k">:</span>n<span class="pl-k">*</span>FL);
+        PT = findpitch(s_Pitch);    <span class="pl-c">% 计算基音周期PT（不要求掌握）</span>
+        G = <span class="pl-k">sqrt</span>(E<span class="pl-k">*</span>PT);           <span class="pl-c">% 计算合成激励的能量G（不要求掌握）</span>
+
+
+        <span class="pl-c">% (10) 在此位置写程序，生成合成激励，并用激励和filter函数产生合成语音</span>
+
+
+        <span class="pl-c">% exc_syn((n-1)*FL+1:n*FL) = ... 将你计算得到的合成激励写在这里</span>
+        <span class="pl-c">% s_syn((n-1)*FL+1:n*FL) = ...   将你计算得到的合成语音写在这里</span>
+
+        <span class="pl-c">% (11) 不改变基音周期和预测系数，将合成激励的长度增加一倍，再作为filter</span>
+        <span class="pl-c">% 的输入得到新的合成语音，听一听是不是速度变慢了，但音调没有变。</span>
+
+
+        <span class="pl-c">% exc_syn_v((n-1)*FL_v+1:n*FL_v) = ... 将你计算得到的加长合成激励写在这里</span>
+        <span class="pl-c">% s_syn_v((n-1)*FL_v+1:n*FL_v) = ...   将你计算得到的加长合成语音写在这里</span>
+
+        <span class="pl-c">% (13) 将基音周期减小一半，将共振峰频率增加150Hz，重新合成语音，听听是啥感受～</span>
+
+
+        <span class="pl-c">% exc_syn_t((n-1)*FL+1:n*FL) = ... 将你计算得到的变调合成激励写在这里</span>
+        <span class="pl-c">% s_syn_t((n-1)*FL+1:n*FL) = ...   将你计算得到的变调合成语音写在这里</span>
+
+    <span class="pl-k">end</span>
+
+    <span class="pl-c">% (6) 在此位置写程序，听一听 s ，exc 和 s_rec 有何区别，解释这种区别</span>
+    <span class="pl-c">% 后面听语音的题目也都可以在这里写，不再做特别注明</span>
+
+
+    <span class="pl-c">% 保存所有文件</span>
+    writespeech(<span class="pl-s"><span class="pl-pds">'</span>exc.pcm<span class="pl-pds">'</span></span>,exc);
+    writespeech(<span class="pl-s"><span class="pl-pds">'</span>rec.pcm<span class="pl-pds">'</span></span>,s_rec);
+    writespeech(<span class="pl-s"><span class="pl-pds">'</span>exc_syn.pcm<span class="pl-pds">'</span></span>,exc_syn);
+    writespeech(<span class="pl-s"><span class="pl-pds">'</span>syn.pcm<span class="pl-pds">'</span></span>,s_syn);
+    writespeech(<span class="pl-s"><span class="pl-pds">'</span>exc_syn_t.pcm<span class="pl-pds">'</span></span>,exc_syn_t);
+    writespeech(<span class="pl-s"><span class="pl-pds">'</span>syn_t.pcm<span class="pl-pds">'</span></span>,s_syn_t);
+    writespeech(<span class="pl-s"><span class="pl-pds">'</span>exc_syn_v.pcm<span class="pl-pds">'</span></span>,exc_syn_v);
+    writespeech(<span class="pl-s"><span class="pl-pds">'</span>syn_v.pcm<span class="pl-pds">'</span></span>,s_syn_v);
+<span class="pl-k">return</span>
+
+<span class="pl-c">% 从PCM文件中读入语音</span>
+<span class="pl-k">function</span> <span class="pl-v">s</span> = <span class="pl-en">readspeech</span>(filename, L)
+    fid = <span class="pl-k">fopen</span>(filename, <span class="pl-s"><span class="pl-pds">'</span>r<span class="pl-pds">'</span></span>);
+    s = <span class="pl-k">fread</span>(fid, L, <span class="pl-s"><span class="pl-pds">'</span>int16<span class="pl-pds">'</span></span>);
+    <span class="pl-k">fclose</span>(fid);
+<span class="pl-k">return</span>
+
+<span class="pl-c">% 写语音到PCM文件中</span>
+<span class="pl-k">function</span> <span class="pl-en">writespeech</span>(filename,s)
+    fid = <span class="pl-k">fopen</span>(filename,<span class="pl-s"><span class="pl-pds">'</span>w<span class="pl-pds">'</span></span>);
+    <span class="pl-k">fwrite</span>(fid, s, <span class="pl-s"><span class="pl-pds">'</span>int16<span class="pl-pds">'</span></span>);
+    <span class="pl-k">fclose</span>(fid);
+<span class="pl-k">return</span>
+
+<span class="pl-c">% 计算一段语音的基音周期，不要求掌握</span>
+<span class="pl-k">function</span> <span class="pl-v">PT</span> = <span class="pl-en">findpitch</span>(s)
+[B, A] = <span class="pl-c1">butter</span>(<span class="pl-c1">5</span>, <span class="pl-c1">700</span><span class="pl-k">/</span><span class="pl-c1">4000</span>);
+s = <span class="pl-k">filter</span>(B,A,s);
+R = <span class="pl-k">zeros</span>(<span class="pl-c1">143</span>,<span class="pl-c1">1</span>);
+<span class="pl-k">for</span> k=<span class="pl-c1">1</span><span class="pl-k">:</span><span class="pl-c1">143</span>
+    R(k) = s(<span class="pl-c1">144</span><span class="pl-k">:</span><span class="pl-c1">223</span>)<span class="pl-k">'</span><span class="pl-k">*</span>s(<span class="pl-c1">144</span><span class="pl-k">-</span>k<span class="pl-k">:</span><span class="pl-c1">223</span><span class="pl-k">-</span>k);
+<span class="pl-k">end</span>
+[R1,T1] = <span class="pl-k">max</span>(R(<span class="pl-c1">80</span><span class="pl-k">:</span><span class="pl-c1">143</span>));
+T1 = T1<span class="pl-k"> + </span><span class="pl-c1">79</span>;
+R1 = R1<span class="pl-k">/</span>(<span class="pl-k">norm</span>(s(<span class="pl-c1">144</span><span class="pl-k">-</span>T1<span class="pl-k">:</span><span class="pl-c1">223</span><span class="pl-k">-</span>T1))<span class="pl-k">+</span><span class="pl-c1">1</span>);
+[R2,T2] = <span class="pl-k">max</span>(R(<span class="pl-c1">40</span><span class="pl-k">:</span><span class="pl-c1">79</span>));
+T2 = T2<span class="pl-k"> + </span><span class="pl-c1">39</span>;
+R2 = R2<span class="pl-k">/</span>(<span class="pl-k">norm</span>(s(<span class="pl-c1">144</span><span class="pl-k">-</span>T2<span class="pl-k">:</span><span class="pl-c1">223</span><span class="pl-k">-</span>T2))<span class="pl-k">+</span><span class="pl-c1">1</span>);
+[R3,T3] = <span class="pl-k">max</span>(R(<span class="pl-c1">20</span><span class="pl-k">:</span><span class="pl-c1">39</span>));
+T3 = T3<span class="pl-k"> + </span><span class="pl-c1">19</span>;
+R3 = R3<span class="pl-k">/</span>(<span class="pl-k">norm</span>(s(<span class="pl-c1">144</span><span class="pl-k">-</span>T3<span class="pl-k">:</span><span class="pl-c1">223</span><span class="pl-k">-</span>T3))<span class="pl-k">+</span><span class="pl-c1">1</span>);
+Top = T1;
+Rop = R1;
+<span class="pl-k">if</span> R2<span class="pl-k"> &gt;</span>= <span class="pl-c1">0.85</span><span class="pl-k">*</span>Rop
+    Rop = R2;
+    Top = T2;
+<span class="pl-k">end</span>
+<span class="pl-k">if</span> R3<span class="pl-k"> &gt; </span><span class="pl-c1">0.85</span><span class="pl-k">*</span>Rop
+    Rop = R3;
+    Top = T3;
+<span class="pl-k">end</span>
+PT = Top;
+<span class="pl-k">return</span></pre></div>
+
+<p><strong>speechproc函数的系统框图</strong></p>
+
+<p><a href="pic/structure-speechproc.png" target="_blank"><img src="pic/structure-speechproc.png" alt="系统框图" style="max-width:100%;"></a></p>
+</li>
+<li>
+<p>在<code>speechproc</code>运行至第27帧时观察预测系统的<strong>零极点图</strong></p>
+
+<p><strong>预测系统</strong> $$e(n)=s(n)-\sum_{k=1}^{N}a_k s(n-k)$$</p>
+
+<p>其中$s(n)$为输入, $e(n)$为输出, 则系统函数 $$H_{pre}(z)=\frac{z^N-\sum_{k=1}^{N}a_k z^{N-k}}{z^N}$$</p>
+
+<p>取<strong>预测系数个数</strong> $N=P=10$</p>
+
+<ul>
+<li>
+<p><code>lpc</code>函数</p>
+
+<div class="highlight highlight-matlab"><pre>[A,E] = <span class="pl-c1">lpc</span>(X,N)
+<span class="pl-c">% A = [1 A(2) A(3) ... A(N+1)]</span></pre></div>
+
+<p>系数$A_i$使得 $$err(n)=X(n)-\sum_{k=1}^{N}(-A_{k+1} X(n-k))$$ 取到最小值, 于是可知 $$A = [1,-a_1,-a_2,...,-a_N]$$</p>
+</li>
+</ul>
+
+<p>在<code>speechproc</code>中相应位置插入代码:</p>
+
+<div class="highlight highlight-matlab"><pre><span class="pl-k">if</span> n<span class="pl-k"> == </span><span class="pl-c1">27</span>
+<span class="pl-c">% (3) 在此位置写程序，观察预测系统的零极点图</span>
+    [z,p,~] = <span class="pl-c1">tf2zp</span>(A,[<span class="pl-c1">1</span>,<span class="pl-k">zeros</span>(<span class="pl-c1">1</span>,P)]);
+    <span class="pl-c1">zplane</span>(z,p);
+    <span class="pl-c1">title</span>(<span class="pl-s"><span class="pl-pds">'</span>预测系统零极点图(第27帧)<span class="pl-pds">'</span></span>);
+<span class="pl-k">end</span></pre></div>
+
+<p><a href="pic/zplane-pre27.png" target="_blank"><img src="pic/zplane-pre27.png" alt="预测系统第27帧零极点图" style="max-width:100%;"></a></p>
+</li>
+<li>
+<p>在循环中添加程序: 对每帧语音信号$s(n)$和预测模型系数${a_i}$, 用<code>filter</code>计算激励信号$e(n)$. <strong>注意: 在系数变化的情况下连续滤波, 需维持滤波器的状态不变</strong></p>
+
+<div class="highlight highlight-matlab"><pre><span class="pl-c">% (4) 在此位置写程序，用filter函数s_f计算激励，注意保持滤波器状态</span>
+[Y,zi_pre] = <span class="pl-k">filter</span>(A,[<span class="pl-c1">1</span>,<span class="pl-k">zeros</span>(<span class="pl-c1">1</span>,P)],s_f,zi_pre);   <span class="pl-c">% keep state: zi_pre</span>
+exc((n<span class="pl-k">-</span><span class="pl-c1">1</span>)<span class="pl-k">*</span>FL<span class="pl-k">+</span><span class="pl-c1">1</span><span class="pl-k">:</span>n<span class="pl-k">*</span>FL) = Y;
+<span class="pl-c">% exc((n-1)*FL+1:n*FL) = ... 将你计算得到的激励写在这里</span></pre></div>
+</li>
+<li>
+<p>完善<a href="src/speechproc.m">speechproc.m</a>程序, 在循环中添加程序: 用你计算得到的激励信号$e(n)$和预测模型系数${a_i}$, 用<code>filter</code>计算重建语音$\hat{s}(n)$. <strong>同样要注意维持滤波器的状态不变</strong></p>
+
+<p>对于<strong>语音重建模型</strong> $$\hat{s}(n)=x(n)+\sum_{k=1}^{N}a_k \hat{s}(n-k)$$</p>
+
+<p>输入为$x(n)$, 输出为$\hat{s}(n)$, 则系统函数 $$H_{rec}(z)=\frac{1}{H_{pre}(z)}=\frac{z^N}{z^N-\sum_{k=1}^{N}a_k z^{N-k}}$$</p>
+
+<div class="highlight highlight-matlab"><pre><span class="pl-c">% (5) 在此位置写程序，用filter函数和exc重建语音，注意保持滤波器状态</span>
+[Y,zi_rec] = <span class="pl-k">filter</span>([<span class="pl-c1">1</span>,<span class="pl-k">zeros</span>(<span class="pl-c1">1</span>,P)],A,Y,zi_rec);
+s_rec((n<span class="pl-k">-</span><span class="pl-c1">1</span>)<span class="pl-k">*</span>FL<span class="pl-k">+</span><span class="pl-c1">1</span><span class="pl-k">:</span>n<span class="pl-k">*</span>FL) = Y;
+<span class="pl-c">% s_rec((n-1)*FL+1:n*FL) = ... 将你计算得到的重建语音写在这里</span></pre></div>
+</li>
+<li>
+<p>对比<strong>归一化</strong>(<a href="src/normalize.m">normalize.m</a>)后的$e(n)$, $s(n)$以及$\hat{s}(n)$信号</p>
+
+<div class="highlight highlight-matlab"><pre><span class="pl-c">% normalization</span>
+s = <span class="pl-c1">normalize</span>(s);
+exc = <span class="pl-c1">normalize</span>(exc);
+s_rec = <span class="pl-c1">normalize</span>(s_rec);
+
+<span class="pl-k">sound</span>([s;exc;s_rec],<span class="pl-c1">8000</span>);
+<span class="pl-c1">figure</span>(<span class="pl-c1">2</span>);
+<span class="pl-c1">subplot</span>(<span class="pl-c1">3</span>,<span class="pl-c1">1</span>,<span class="pl-c1">1</span>);<span class="pl-c1">plot</span>(s);<span class="pl-c1">title</span>(<span class="pl-s"><span class="pl-pds">'</span>原声<span class="pl-pds">'</span></span>);
+<span class="pl-c1">subplot</span>(<span class="pl-c1">3</span>,<span class="pl-c1">1</span>,<span class="pl-c1">2</span>);<span class="pl-c1">plot</span>(exc);<span class="pl-c1">title</span>(<span class="pl-s"><span class="pl-pds">'</span>激励信号<span class="pl-pds">'</span></span>);
+<span class="pl-c1">subplot</span>(<span class="pl-c1">3</span>,<span class="pl-c1">1</span>,<span class="pl-c1">3</span>);<span class="pl-c1">plot</span>(s_rec);<span class="pl-c1">title</span>(<span class="pl-s"><span class="pl-pds">'</span>重建信号<span class="pl-pds">'</span></span>);
+<span class="pl-c1">figure</span>(<span class="pl-c1">3</span>);
+<span class="pl-c1">plot</span>(s,<span class="pl-s"><span class="pl-pds">'</span>k<span class="pl-pds">'</span></span>);<span class="pl-c1">axis</span>([<span class="pl-c1">6400</span> <span class="pl-c1">6500</span><span class="pl-k"> -</span><span class="pl-c1">1</span> <span class="pl-c1">1</span>]);<span class="pl-c1">hold</span> <span class="pl-c1">on</span>
+<span class="pl-c1">plot</span>(exc,<span class="pl-s"><span class="pl-pds">'</span>r<span class="pl-pds">'</span></span>);
+<span class="pl-c1">plot</span>(s_rec);<span class="pl-c1">hold</span> <span class="pl-c1">off</span>;
+<span class="pl-c1">legend</span>(<span class="pl-s"><span class="pl-pds">'</span>原声<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>激励信号<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>重建信号<span class="pl-pds">'</span></span>);<span class="pl-c1">title</span>(<span class="pl-s"><span class="pl-pds">'</span>片段对比<span class="pl-pds">'</span></span>);</pre></div>
+
+<p><strong>听觉感受</strong></p>
+
+<ul>
+<li><p>$s(n)$和$\hat{s}(n)$听不出区别, 清晰明了</p></li>
+<li><p>$e(n)$有杂音, 但语音内容基本可以辨认</p></li>
+</ul>
+
+<p><strong>整体波形</strong></p>
+
+<p><a href="pic/whole.png" target="_blank"><img src="pic/whole.png" alt="整体" style="max-width:100%;"></a></p>
+
+<ul>
+<li><p>$s(n)$和$\hat{s}(n)$波形包络基本一致, $e(n)$则不同</p></li>
+<li><p>三者波形包络基本可以反映音节出现的位置</p></li>
+</ul>
+
+<p><strong>局部波形</strong></p>
+
+<p><a href="pic/part.png" target="_blank"><img src="pic/part.png" alt="局部" style="max-width:100%;"></a></p>
+
+<ul>
+<li><p>$s(n)$和$\hat{s}(n)$波形完全重合(黑色的$s(n)$被蓝色的$\hat{s}(n)$覆盖)</p></li>
+<li><p>$e(n)$变化更陡峭剧烈, 而$s(n)$和$\hat{s}(n)$的变化相对缓慢</p></li>
+<li><p>$e(n)$的局部峰值基本对应$s(n)$和$\hat{s}(n)$的局部峰值</p></li>
+</ul>
+</li>
+</ol>
+
+<h2>
+<a id="user-content-语音合成模型" class="anchor" href="#%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90%E6%A8%A1%E5%9E%8B" aria-hidden="true"><span class="octicon octicon-link"></span></a>语音合成模型</h2>
+
+<ol>
+<li>
+<p><strong>(练习7)</strong> 生成一个$f_s=8000\text{Hz}$抽样的持续时间$T=1\text{s}$的数字信号, 该信号是一个频率为$f=200\text{Hz}$的单位样值"串", 即 $$x(n)=\sum_{i=0}^{NS-1} \delta (n-iN)$$</p>
+
+<p>则式中$N=\frac{f_s}{f}=40$, $NS=Tf=200$</p>
+
+<p>单位样值"串"即每隔一定间隔$N$有一脉冲(幅度为1), 其余位置取值为0, 则可以通过以下方法生成$x(n)$ (<a href="src/impulsestring.m">impulsestring.m</a>)</p>
+
+<div class="highlight highlight-matlab"><pre><span class="pl-k">function</span> <span class="pl-v">x</span> = <span class="pl-en">impulsestring</span>(T,f,fs)
+<span class="pl-c">%Generate impulse string</span>
+<span class="pl-c">%输入:</span>
+<span class="pl-c">%   &lt;double&gt;T: 信号长度, 单位(秒)</span>
+<span class="pl-c">%   &lt;double&gt;f: 冲激串频率</span>
+<span class="pl-c">%   &lt;double&gt;fs: 采样频率</span>
+<span class="pl-c">%输出:</span>
+<span class="pl-c">%   &lt;column vector&gt;x: length(x)==round(T*fs), sum(x)==round(T*f)</span>
+
+x = <span class="pl-k">zeros</span>(<span class="pl-k">round</span>(T<span class="pl-k">*</span>fs),<span class="pl-c1">1</span>);   <span class="pl-c">% initialize x(n)</span>
+NS = <span class="pl-k">round</span>(T<span class="pl-k">*</span>f);            <span class="pl-c">% NS</span>
+<span class="pl-k">for</span> <span class="pl-k">i</span>=<span class="pl-c1">0</span><span class="pl-k">:</span>NS<span class="pl-k">-</span><span class="pl-c1">1</span>
+    x(<span class="pl-k">round</span>(<span class="pl-k">i</span><span class="pl-k">*</span>fs<span class="pl-k">/</span>f)<span class="pl-k">+</span><span class="pl-c1">1</span>) = <span class="pl-c1">1</span>;   <span class="pl-c">% x(k) = 1 if (k-i*N == 0) else 0</span>
+<span class="pl-k">end</span>
+
+<span class="pl-k">end</span></pre></div>
+
+<p><strong>注1:</strong> 另一种生成方法是先利用<code>N=round(fs/f)</code>将<code>N</code>求出, 再以<code>N</code>为步长产生冲激, 但这样的结果不精确, 如当$314 \leq f \leq 326$时, 求得的$N$均为25, 产生的单位样值串频率均为320Hz, 误差在<strong>2%</strong>左右</p>
+
+<p><strong>注2:</strong> 上述方法产生的信号, 虽然相邻两冲激之间的间隔<strong>不是恒定</strong>(有$\pm 1$的浮动)的, 但从整体上看, 生成信号的频率更接近需求</p>
+
+<p><strong>试听</strong></p>
+
+<div class="highlight highlight-matlab"><pre><span class="pl-k">&gt;&gt; </span><span class="pl-k">sound</span>(impulsestring(<span class="pl-c1">1</span>,<span class="pl-c1">200</span>,fs),fs);
+<span class="pl-k">&gt;&gt; </span><span class="pl-k">sound</span>(impulsestring(<span class="pl-c1">1</span>,<span class="pl-c1">300</span>,fs),fs);</pre></div>
+
+<ul>
+<li><p>略刺耳</p></li>
+<li><p>300Hz单位样值串音调更高</p></li>
+</ul>
+
+<p><a href="pic/impulsestring.png" target="_blank"><img src="pic/impulsestring.png" alt="对比单位样值串" style="max-width:100%;"></a></p>
+</li>
+<li>
+<p><strong>(练习8)</strong> 真实语音信号的基音周期总是随时间变化的. 我们首先将信号分成若干个10毫秒长的段, 假设每个段内基音周期固定不变, 但段和段之间则不同, 具体为 $$PT=80+5mod(m,50)$$</p>
+
+<p>其中$PT$表示基因周期, $m$表示段序号, <strong>相邻两脉冲的间隔由前一个脉冲所在的段序号决定</strong></p>
+
+<p>生成时长为1秒钟的上述信号(<a href="src/pitchtest.m">pitchtest.m</a>): </p>
+
+<div class="highlight highlight-matlab"><pre>x = <span class="pl-k">zeros</span>(<span class="pl-c1">8000</span>,<span class="pl-c1">1</span>);
+cursor = <span class="pl-c1">1</span>;
+m = <span class="pl-c1">1</span>;          <span class="pl-c">% index of slice</span>
+<span class="pl-k">while</span> m<span class="pl-k"> &lt;</span>= <span class="pl-c1">100</span>
+    x(cursor) = <span class="pl-c1">1</span>;
+    cursor = cursor<span class="pl-k"> + </span><span class="pl-c1">80</span><span class="pl-k"> + </span><span class="pl-c1">5</span><span class="pl-k">*</span><span class="pl-k">mod</span>(m,<span class="pl-c1">50</span>);     <span class="pl-c">% next cursor</span>
+    m = <span class="pl-k">ceil</span>(cursor<span class="pl-k">/</span><span class="pl-c1">80</span>);                    <span class="pl-c">% locate next cursor</span>
+<span class="pl-k">end</span>
+<span class="pl-c1">figure</span>;
+<span class="pl-c1">stem</span>(<span class="pl-c1">0</span><span class="pl-k">:</span><span class="pl-c1">8000</span><span class="pl-k">-</span><span class="pl-c1">1</span>,x);</pre></div>
+
+<p><a href="pic/pitch-time-variant.png" target="_blank"><img src="pic/pitch-time-variant.png" alt="基音周期变化的信号" style="max-width:100%;"></a></p>
+
+<p><strong>试听</strong></p>
+
+<ul>
+<li><p>生成的信号被均分为重复的两段, 每段内音调逐渐变化</p></li>
+<li><p>不好听, <strong>很压抑</strong>, 好像也不能称之为<strong>颤音</strong>, 这个声音让我想到<strong>拉链</strong>的声音, 频率随时间变化的特征也相似, 姑且称之为<strong>拉链音</strong></p></li>
+</ul>
+</li>
+<li>
+<p><strong>(练习9)</strong> 用<code>filter</code>将<strong>(8)</strong>中的激励信号$e(n)$输入到<strong>(1)</strong>的系统中计算输出$s(n)$</p>
+
+<div class="highlight highlight-matlab"><pre>y = <span class="pl-c1">normalize</span>(<span class="pl-k">filter</span>(b,a,x));
+<span class="pl-k">sound</span>(y,fs);</pre></div>
+
+<p><strong>试听</strong></p>
+
+<ul>
+<li><p>经过滤波器后<strong>音色</strong>发生显著变化, 变得更清脆了, 不那么刺耳</p></li>
+<li><p>经过滤波器后<strong>音调</strong>似乎变低沉了一些</p></li>
+</ul>
+
+<p><a href="pic/before-after.png" target="_blank"><img src="pic/before-after.png" alt="滤波前后对比" style="max-width:100%;"></a></p>
+</li>
+<li>
+<p><strong>(练习10)</strong> 重改<a href="src/speechproc.m">speechproc.m</a>程序. 利用每一帧已经计算得到的基音周期和<strong>(8)</strong>的方法, 生成合成激励信号$G x(n)$, 用<code>filter</code>函数将$G x(n)$送入合成滤波器得到合成语音$\hat{s}(n)$</p>
+
+<div class="highlight highlight-matlab"><pre><span class="pl-c">% (10) 在此位置写程序，生成合成激励，并用激励和filter函数产生合成语音</span>
+
+<span class="pl-k">if</span> n<span class="pl-k"> == </span><span class="pl-c1">3</span>                   <span class="pl-c">% first loop</span>
+    cursor = (n<span class="pl-k">-</span><span class="pl-c1">1</span>)<span class="pl-k">*</span>FL<span class="pl-k">+</span><span class="pl-c1">1</span>;    <span class="pl-c">% initialize cursor</span>
+    m = n;                  <span class="pl-c">% initialize m</span>
+<span class="pl-k">end</span>
+
+<span class="pl-k">while</span> m<span class="pl-k"> == </span>n                <span class="pl-c">% cursor still point into current frame</span>
+    exc_syn(cursor) = <span class="pl-c1">1</span>;
+    cursor = cursor<span class="pl-k"> + </span>PT;   <span class="pl-c">% next cursor</span>
+    m = <span class="pl-k">ceil</span>(cursor<span class="pl-k">/</span>FL);    <span class="pl-c">% locate next cursor</span>
+<span class="pl-k">end</span>
+
+s_syn((n<span class="pl-k">-</span><span class="pl-c1">1</span>)<span class="pl-k">*</span>FL<span class="pl-k">+</span><span class="pl-c1">1</span><span class="pl-k">:</span>n<span class="pl-k">*</span>FL) = <span class="pl-k">filter</span>([<span class="pl-c1">1</span>,<span class="pl-k">zeros</span>(<span class="pl-c1">1</span>,P)],A,...
+    G<span class="pl-k">*</span>exc_syn((n<span class="pl-k">-</span><span class="pl-c1">1</span>)<span class="pl-k">*</span>FL<span class="pl-k">+</span><span class="pl-c1">1</span><span class="pl-k">:</span>n<span class="pl-k">*</span>FL));
+
+<span class="pl-c">% exc_syn((n-1)*FL+1:n*FL) = ... 将你计算得到的合成激励写在这里</span>
+<span class="pl-c">% s_syn((n-1)*FL+1:n*FL) = ...   将你计算得到的合成语音写在这里</span></pre></div>
+
+<p><strong>试听</strong></p>
+
+<ul>
+<li><p>可以听出合成信号语音的内容</p></li>
+<li><p>语音的清晰度不如原语音, 有杂音</p></li>
+<li><p>音调低沉, 比较压抑, 有种<strong>收音机</strong>的厚重感</p></li>
+</ul>
+
+<p><strong>波形比较</strong></p>
+
+<p><a href="pic/syn.png" target="_blank"><img src="pic/syn.png" alt="合成音" style="max-width:100%;"></a></p>
+
+<ul>
+<li><p>波形包络基本相同</p></li>
+<li><p><code>y&lt;0</code>部分的包络似乎不太吻合</p></li>
+</ul>
+</li>
+</ol>
+
+<h2>
+<a id="user-content-变速不变调" class="anchor" href="#%E5%8F%98%E9%80%9F%E4%B8%8D%E5%8F%98%E8%B0%83" aria-hidden="true"><span class="octicon octicon-link"></span></a>变速不变调</h2>
+
+<ol>
+<li>
+<p><strong>(练习11)</strong> 仿照<strong>(10)</strong>重改<a href="src/speechproc.m">speechproc.m</a>程序, 只不过将<strong>(10)</strong>中合成激励的长度增加一倍, 即原来10毫秒的一帧变成了20毫秒一帧, 再用同样的方法合成出语音<code>s_syn_v</code></p>
+
+<div class="highlight highlight-matlab"><pre><span class="pl-c">% (11) 不改变基音周期和预测系数，将合成激励的长度增加一倍，再作为filter</span>
+<span class="pl-c">% 的输入得到新的合成语音，听一听是不是速度变慢了，但音调没有变。</span>
+
+FL_v = <span class="pl-c1">2</span><span class="pl-k">*</span>FL;
+<span class="pl-k">if</span> n<span class="pl-k"> == </span><span class="pl-c1">3</span>                   <span class="pl-c">% first loop</span>
+    cursor_v = (n<span class="pl-k">-</span><span class="pl-c1">1</span>)<span class="pl-k">*</span>FL_v<span class="pl-k">+</span><span class="pl-c1">1</span>;    <span class="pl-c">% initialize cursor</span>
+    m_v = n;                  <span class="pl-c">% initialize m</span>
+<span class="pl-k">end</span>
+
+<span class="pl-k">while</span> m_v<span class="pl-k"> == </span>n                <span class="pl-c">% cursor still point into current frame</span>
+    exc_syn_v(cursor_v) = <span class="pl-c1">1</span>;
+    cursor_v = cursor_v<span class="pl-k"> + </span>PT;   <span class="pl-c">% next cursor</span>
+    m_v = <span class="pl-k">ceil</span>(cursor_v<span class="pl-k">/</span>FL_v);    <span class="pl-c">% locate next cursor</span>
+<span class="pl-k">end</span>
+
+s_syn_v((n<span class="pl-k">-</span><span class="pl-c1">1</span>)<span class="pl-k">*</span>FL_v<span class="pl-k">+</span><span class="pl-c1">1</span><span class="pl-k">:</span>n<span class="pl-k">*</span>FL_v) = <span class="pl-k">filter</span>([<span class="pl-c1">1</span>,<span class="pl-k">zeros</span>(<span class="pl-c1">1</span>,P)],A,...
+    G<span class="pl-k">*</span>exc_syn_v((n<span class="pl-k">-</span><span class="pl-c1">1</span>)<span class="pl-k">*</span>FL_v<span class="pl-k">+</span><span class="pl-c1">1</span><span class="pl-k">:</span>n<span class="pl-k">*</span>FL_v));
+
+<span class="pl-c">% exc_syn_v((n-1)*FL_v+1:n*FL_v) = ... 将你计算得到的加长合成激励写在这里</span>
+<span class="pl-c">% s_syn_v((n-1)*FL_v+1:n*FL_v) = ...   将你计算得到的加长合成语音写在这里</span></pre></div>
+
+<p><strong>试听</strong></p>
+
+<ul>
+<li>在合成信号<code>s_syn</code>的基础上, <code>s_syn_v</code>速度变为原来的一半, 而音调没有变化</li>
+</ul>
+
+<p><a href="pic/half-velocity.png" target="_blank"><img src="pic/half-velocity.png" alt="半速原调" style="max-width:100%;"></a></p>
+</li>
+</ol>
+
+<h2>
+<a id="user-content-变调不变速" class="anchor" href="#%E5%8F%98%E8%B0%83%E4%B8%8D%E5%8F%98%E9%80%9F" aria-hidden="true"><span class="octicon octicon-link"></span></a>变调不变速</h2>
+
+<ol>
+<li>
+<p><strong>(练习12)</strong> 重新考察<strong>(1)</strong>中的系统 $$e(n)=s(n)-a_1s(n-1)-a_2s(n-2)$$ $$a_1=1.3789, a_2=-0.9506$$ $$p_{1,2}=0.6895\pm 0.6894j=0.9750e^{\pm j0.7854}$$ $$f_f=999.94\text{Hz}$$</p>
+
+<p>而<strong>共振峰频率</strong> $$f_f=\frac{Arg(p)}{2\pi}f_s$$</p>
+
+<p>因此需通过<strong>旋转极点</strong>(改变幅角)改变共振峰频率</p>
+
+<p>定义<code>rotatez</code>函数用以旋转复数(<a href="src/rotatez.m">rotatez.m</a>)</p>
+
+<div class="highlight highlight-matlab"><pre><span class="pl-k">function</span> <span class="pl-v">zr</span> = <span class="pl-en">rotatez</span>(z,rad)
+<span class="pl-c">%Rotate complex number z by rad counterclockwisely</span>
+
+zr = z<span class="pl-k">*</span><span class="pl-k">exp</span>(rad<span class="pl-k">*</span><span class="pl-ii">1j</span>);
+
+<span class="pl-k">end</span></pre></div>
+
+<p>则共振峰频率变化量为 $$\Delta f = \frac{\Delta Arg(p)}{2\pi} f_s$$</p>
+
+<p>定义<code>changetone</code>函数(<a href="src/changetone.m">changetone.m</a>)</p>
+
+<div class="highlight highlight-matlab"><pre><span class="pl-k">function</span> <span class="pl-v">A</span> = <span class="pl-en">changetone</span>(a,df,fs)
+<span class="pl-c">%A = changetong(a,df,fs)</span>
+<span class="pl-c">%输入:</span>
+<span class="pl-c">%   &lt;vector&gt;a: 传递函数的分母, 用于求极点</span>
+<span class="pl-c">%   &lt;double&gt;df: 频率变化量</span>
+<span class="pl-c">%   &lt;double&gt;fs: 采样频率</span>
+<span class="pl-c">%输出:</span>
+<span class="pl-c">%   &lt;row vector&gt;A: 变频后新系统传递函数的分母</span>
+
+p = <span class="pl-k">roots</span>(a);    <span class="pl-c">% get poles</span>
+<span class="pl-k">for</span> k=<span class="pl-c1">1</span><span class="pl-k">:</span><span class="pl-k">length</span>(p)
+    p(k) = rotatez(p(k),<span class="pl-k">sign</span>(<span class="pl-k">rem</span>(<span class="pl-k">angle</span>(p(k)),<span class="pl-k">pi</span>))<span class="pl-k">*</span><span class="pl-c1">2</span><span class="pl-k">*</span><span class="pl-k">pi</span><span class="pl-k">*</span>df<span class="pl-k">/</span>fs);    <span class="pl-c">% rotate</span>
+    <span class="pl-c">% use rem() in case angle equals pi</span>
+<span class="pl-k">end</span>
+A = <span class="pl-k">poly</span>(p);    <span class="pl-c">% get poly</span>
+
+<span class="pl-k">end</span></pre></div>
+
+<div class="highlight highlight-matlab"><pre><span class="pl-k">&gt;&gt; </span>a_t = changetone(a,<span class="pl-c1">150</span>,fs)
+
+a_t <span class="pl-ii">=</span>
+
+    <span class="pl-c1">1.0000</span><span class="pl-k">   -</span><span class="pl-c1">1.2073</span>    <span class="pl-c1">0.9506</span></pre></div>
+
+<p>因此<strong>共振峰频率</strong>提高150Hz后, $a_1=1.2073, a_2=-0.9506$</p>
+
+<p><strong>对比系统前后变化</strong></p>
+
+<ul>
+<li>
+<p>绘制<strong>零极点图</strong> (<a href="src/zplane_changetone.m">zplane_changetone.m</a>)</p>
+
+<div class="highlight highlight-matlab"><pre>[Z,P,~]=<span class="pl-c1">tf2zp</span>(b,a);
+[Z_t,P_t,~]=<span class="pl-c1">tf2zp</span>(b,a_t);
+<span class="pl-c1">figure</span>;
+[Hz1,Hp1,Hl1] = <span class="pl-c1">zplane</span>(Z,P);
+<span class="pl-c1">hold</span> <span class="pl-c1">on</span>;
+[Hz2,Hp2,Hl2] = <span class="pl-c1">zplane</span>(Z_t,P_t);
+<span class="pl-c1">hold</span> <span class="pl-c1">off</span>;
+<span class="pl-c1">xlim</span>([<span class="pl-k">-</span><span class="pl-c1">1.4</span> <span class="pl-c1">1.4</span>]);
+<span class="pl-c1">set</span>(<span class="pl-c1">findobj</span>(Hz2, <span class="pl-s"><span class="pl-pds">'</span>Type<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>line<span class="pl-pds">'</span></span>), <span class="pl-s"><span class="pl-pds">'</span>Color<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>r<span class="pl-pds">'</span></span>)
+<span class="pl-c1">set</span>(<span class="pl-c1">findobj</span>(Hp2, <span class="pl-s"><span class="pl-pds">'</span>Type<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>line<span class="pl-pds">'</span></span>), <span class="pl-s"><span class="pl-pds">'</span>Color<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>r<span class="pl-pds">'</span></span>)
+<span class="pl-c1">legend</span>([Hp1,Hp2],<span class="pl-s"><span class="pl-pds">'</span>原系统<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>变调系统<span class="pl-pds">'</span></span>);
+<span class="pl-c1">title</span>(<span class="pl-s"><span class="pl-pds">'</span>旋转极点<span class="pl-pds">'</span></span>);</pre></div>
+
+<p><a href="pic/rotate-poles.png" target="_blank"><img src="pic/rotate-poles.png" alt="旋转极点" style="max-width:100%;"></a></p>
+
+<p><strong>极点幅角绝对值变大, 共振峰频率增大</strong></p>
+</li>
+<li>
+<p>绘制<strong>频率响应</strong> (<a href="src/freqz_changetone.m">freqz_changetone.m</a>)</p>
+
+<div class="highlight highlight-matlab"><pre>[H,F]=<span class="pl-c1">freqz</span>(b,a,<span class="pl-c1">512</span>,fs);
+[H_t,F_t]=<span class="pl-c1">freqz</span>(b,a_t,<span class="pl-c1">512</span>,fs);
+
+<span class="pl-c1">figure</span>;
+<span class="pl-c1">subplot</span> <span class="pl-c1">211</span>
+<span class="pl-c1">plot</span>(F,<span class="pl-c1">20</span><span class="pl-k">*</span><span class="pl-k">log10</span>(<span class="pl-k">abs</span>(H)));<span class="pl-c1">hold</span> <span class="pl-c1">on</span>;
+<span class="pl-c1">grid</span> <span class="pl-c1">on</span>;
+<span class="pl-c1">xlabel</span>(<span class="pl-s"><span class="pl-pds">'</span>Frequency (Hz)<span class="pl-pds">'</span></span>);<span class="pl-c1">ylabel</span>(<span class="pl-s"><span class="pl-pds">'</span>Magnitude (dB)<span class="pl-pds">'</span></span>);
+<span class="pl-c1">plot</span>(F,<span class="pl-c1">20</span><span class="pl-k">*</span><span class="pl-k">log10</span>(<span class="pl-k">abs</span>(H_t)),<span class="pl-s"><span class="pl-pds">'</span>r<span class="pl-pds">'</span></span>);<span class="pl-c1">hold</span> <span class="pl-c1">off</span>;
+<span class="pl-c1">legend</span>(<span class="pl-s"><span class="pl-pds">'</span>原系统<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>变调系统<span class="pl-pds">'</span></span>);
+<span class="pl-c1">title</span>(<span class="pl-s"><span class="pl-pds">'</span>幅频特性<span class="pl-pds">'</span></span>);
+
+<span class="pl-c1">subplot</span> <span class="pl-c1">212</span>
+<span class="pl-c1">plot</span>(F,<span class="pl-k">angle</span>(H));<span class="pl-c1">hold</span> <span class="pl-c1">on</span>;
+<span class="pl-c1">grid</span> <span class="pl-c1">on</span>;
+<span class="pl-c1">hold</span> <span class="pl-c1">off</span>;
+<span class="pl-c1">plot</span>(F_t,<span class="pl-k">angle</span>(H)<span class="pl-k">/</span><span class="pl-k">pi</span><span class="pl-k">*</span><span class="pl-c1">180</span>);<span class="pl-c1">hold</span> <span class="pl-c1">on</span>;
+<span class="pl-c1">grid</span> <span class="pl-c1">on</span>;
+<span class="pl-c1">xlabel</span>(<span class="pl-s"><span class="pl-pds">'</span>Frequency (Hz)<span class="pl-pds">'</span></span>);<span class="pl-c1">ylabel</span>(<span class="pl-s"><span class="pl-pds">'</span>Phase (degrees)<span class="pl-pds">'</span></span>);
+<span class="pl-c1">plot</span>(F_t,<span class="pl-k">angle</span>(H_t)<span class="pl-k">/</span><span class="pl-k">pi</span><span class="pl-k">*</span><span class="pl-c1">180</span>,<span class="pl-s"><span class="pl-pds">'</span>r<span class="pl-pds">'</span></span>);<span class="pl-c1">hold</span> <span class="pl-c1">off</span>;
+<span class="pl-c1">legend</span>(<span class="pl-s"><span class="pl-pds">'</span>原系统<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>变调系统<span class="pl-pds">'</span></span>);
+<span class="pl-c1">title</span>(<span class="pl-s"><span class="pl-pds">'</span>相频特性<span class="pl-pds">'</span></span>);</pre></div>
+
+<p><a href="pic/freqz-changetone.png" target="_blank"><img src="pic/freqz-changetone.png" alt="频率响应对比" style="max-width:100%;"></a></p>
+
+<p><strong>变调后系统共振峰频率变为1150Hz</strong></p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>(练习13)</strong> 仿照<strong>(10)</strong>重改<a href="src/speechproc.m">speechproc.m</a>程序, 但要将基音周期减小一半, 将所有的共振峰频率都增加150Hz</p>
+
+<div class="highlight highlight-matlab"><pre><span class="pl-c">% (13) 将基音周期减小一半，将共振峰频率增加150Hz，重新合成语音，听听是啥感受～</span>
+
+PT_t = <span class="pl-k">round</span>(PT<span class="pl-k">/</span><span class="pl-c1">2</span>);
+<span class="pl-k">if</span> n<span class="pl-k"> == </span><span class="pl-c1">3</span>                   <span class="pl-c">% first loop</span>
+    cursor_t = (n<span class="pl-k">-</span><span class="pl-c1">1</span>)<span class="pl-k">*</span>FL<span class="pl-k">+</span><span class="pl-c1">1</span>;    <span class="pl-c">% initialize cursor</span>
+    m_t = n;                  <span class="pl-c">% initialize m</span>
+<span class="pl-k">end</span>
+
+<span class="pl-k">while</span> m_t<span class="pl-k"> == </span>n                <span class="pl-c">% cursor still point into current frame</span>
+    exc_syn_t(cursor_t) = <span class="pl-c1">1</span>;
+    cursor_t = cursor_t<span class="pl-k"> + </span>PT_t;   <span class="pl-c">% next cursor</span>
+    m_t = <span class="pl-k">ceil</span>(cursor_t<span class="pl-k">/</span>FL);    <span class="pl-c">% locate next cursor</span>
+<span class="pl-k">end</span>
+
+A_t = changetone(A,<span class="pl-c1">150</span>,<span class="pl-c1">8000</span>);   <span class="pl-c">% ff += 150</span>
+
+s_syn_t((n<span class="pl-k">-</span><span class="pl-c1">1</span>)<span class="pl-k">*</span>FL<span class="pl-k">+</span><span class="pl-c1">1</span><span class="pl-k">:</span>n<span class="pl-k">*</span>FL) = <span class="pl-k">filter</span>([<span class="pl-c1">1</span>,<span class="pl-k">zeros</span>(<span class="pl-c1">1</span>,P)],A_t,...
+    G<span class="pl-k">*</span>exc_syn_t((n<span class="pl-k">-</span><span class="pl-c1">1</span>)<span class="pl-k">*</span>FL<span class="pl-k">+</span><span class="pl-c1">1</span><span class="pl-k">:</span>n<span class="pl-k">*</span>FL));
+
+<span class="pl-c">% exc_syn_t((n-1)*FL+1:n*FL) = ... 将你计算得到的变调合成激励写在这里</span>
+<span class="pl-c">% s_syn_t((n-1)*FL+1:n*FL) = ...   将你计算得到的变调合成语音写在这里</span></pre></div>
+
+<p><strong>试听</strong></p>
+
+<ul>
+<li>由男声变为<strong>女声</strong>
+</li>
+</ul>
+
+<p><a href="pic/raise-tone.png" target="_blank"><img src="pic/raise-tone.png" alt="变调不变速" style="max-width:100%;"></a></p>
+
+<ul>
+<li><p>波形包络也有变化, 原因是改变了<strong>基音周期</strong>, 激励信号$e(n)$变化了</p></li>
+<li><p>时长未改变</p></li>
+</ul>
+</li>
+</ol>
+
+<h2>
+<a id="user-content-变速变调探究" class="anchor" href="#%E5%8F%98%E9%80%9F%E5%8F%98%E8%B0%83%E6%8E%A2%E7%A9%B6" aria-hidden="true"><span class="octicon octicon-link"></span></a>变速变调(探究)</h2>
+
+<ol>
+<li>
+<p>容易发现, 变速变调可以完美地结合在一起, 新建<code>speechproc1(rv,rt,df)</code>(<a href="src/speechproc1.m">speechproc1.m</a>)实现<strong>变速变调</strong>功能</p>
+
+<div class="highlight highlight-matlab"><pre><span class="pl-k">function</span> <span class="pl-v">H</span> = <span class="pl-en">speechproc1</span>(rv,rt,df)
+<span class="pl-c">%speechproc1(rv,rt,df)</span>
+<span class="pl-c">%输入:</span>
+<span class="pl-c">%   &lt;double&gt;rv: 调速比</span>
+<span class="pl-c">%   &lt;double&gt;rt: 调(tiao)调(diao)比, ratio_tone</span>
+<span class="pl-c">%   &lt;double&gt;df: 共振峰频率改变量</span>
+<span class="pl-c">%输出文件</span>
+
+    <span class="pl-c">% 定义常数</span>
+    FL = <span class="pl-c1">80</span>;                <span class="pl-c">% 帧长</span>
+    WL = <span class="pl-c1">240</span>;               <span class="pl-c">% 窗长</span>
+    P = <span class="pl-c1">10</span>;                 <span class="pl-c">% 预测系数个数</span>
+    s = readspeech(<span class="pl-s"><span class="pl-pds">'</span>voice.pcm<span class="pl-pds">'</span></span>,<span class="pl-c1">100000</span>);             <span class="pl-c">% 载入语音s</span>
+    L = <span class="pl-k">length</span>(s);          <span class="pl-c">% 读入语音长度</span>
+    FN = <span class="pl-k">floor</span>(L<span class="pl-k">/</span>FL)<span class="pl-k">-</span><span class="pl-c1">2</span>;     <span class="pl-c">% 计算帧数</span>
+    <span class="pl-c">% 预测和重建滤波器</span>
+    exc = <span class="pl-k">zeros</span>(L,<span class="pl-c1">1</span>);       <span class="pl-c">% 激励信号（预测误差）</span>
+    zi_pre = <span class="pl-k">zeros</span>(P,<span class="pl-c1">1</span>);    <span class="pl-c">% 预测滤波器的状态</span>
+    s_rec = <span class="pl-k">zeros</span>(L,<span class="pl-c1">1</span>);     <span class="pl-c">% 重建语音</span>
+    zi_rec = <span class="pl-k">zeros</span>(P,<span class="pl-c1">1</span>);
+    <span class="pl-c">% 合成滤波器</span>
+    exc_syn = <span class="pl-k">zeros</span>(<span class="pl-k">ceil</span>(L<span class="pl-k">/</span>rv),<span class="pl-c1">1</span>);   <span class="pl-c">% 合成的激励信号（脉冲串）</span>
+    s_syn = <span class="pl-k">zeros</span>(<span class="pl-k">ceil</span>(L<span class="pl-k">/</span>rv),<span class="pl-c1">1</span>);     <span class="pl-c">% 合成语音</span>
+
+    hw = <span class="pl-c1">hamming</span>(WL);       <span class="pl-c">% 汉明窗</span>
+
+    <span class="pl-c">% 依次处理每帧语音</span>
+    <span class="pl-k">for</span> n = <span class="pl-c1">3</span><span class="pl-k">:</span>FN
+
+        <span class="pl-c">% 计算预测系数（不需要掌握）</span>
+        s_w = s(n<span class="pl-k">*</span>FL<span class="pl-k">-</span>WL<span class="pl-k">+</span><span class="pl-c1">1</span><span class="pl-k">:</span>n<span class="pl-k">*</span>FL)<span class="pl-k">.*</span>hw;    <span class="pl-c">%汉明窗加权后的语音</span>
+        [A E] = <span class="pl-c1">lpc</span>(s_w, P);            <span class="pl-c">%用线性预测法计算P个预测系数</span>
+                                        <span class="pl-c">% A是预测系数，E会被用来计算合成激励的能量</span>
+
+        s_f = s((n<span class="pl-k">-</span><span class="pl-c1">1</span>)<span class="pl-k">*</span>FL<span class="pl-k">+</span><span class="pl-c1">1</span><span class="pl-k">:</span>n<span class="pl-k">*</span>FL);       <span class="pl-c">% 本帧语音，下面就要对它做处理</span>
+
+        <span class="pl-c">% (4) 在此位置写程序，用filter函数s_f计算激励，注意保持滤波器状态</span>
+        [Y,zi_pre] = <span class="pl-k">filter</span>(A,[<span class="pl-c1">1</span>,<span class="pl-k">zeros</span>(<span class="pl-c1">1</span>,P)],s_f,zi_pre);   <span class="pl-c">% keep state</span>
+        exc((n<span class="pl-k">-</span><span class="pl-c1">1</span>)<span class="pl-k">*</span>FL<span class="pl-k">+</span><span class="pl-c1">1</span><span class="pl-k">:</span>n<span class="pl-k">*</span>FL) = Y;
+        <span class="pl-c">% exc((n-1)*FL+1:n*FL) = ... 将你计算得到的激励写在这里</span>
+
+        <span class="pl-c">% 注意下面只有在得到exc后才会计算正确</span>
+        s_Pitch = exc(n<span class="pl-k">*</span>FL<span class="pl-k">-</span><span class="pl-c1">222</span><span class="pl-k">:</span>n<span class="pl-k">*</span>FL);
+        PT = findpitch(s_Pitch);    <span class="pl-c">% 计算基音周期PT（不要求掌握）</span>
+        G = <span class="pl-k">sqrt</span>(E<span class="pl-k">*</span>PT);           <span class="pl-c">% 计算合成激励的能量G（不要求掌握）</span>
+
+
+        <span class="pl-c">% 变速变调</span>
+        FL_v = <span class="pl-k">round</span>(FL<span class="pl-k">/</span>rv);        <span class="pl-c">% change velocity</span>
+        PT_t = <span class="pl-k">round</span>(PT<span class="pl-k">/</span>rt);        <span class="pl-c">% change tone</span>
+        A_t = changetone(A,df,<span class="pl-c1">8000</span>);<span class="pl-c">% change predict sys</span>
+
+        <span class="pl-k">if</span> n<span class="pl-k"> == </span><span class="pl-c1">3</span>                   <span class="pl-c">% first loop</span>
+            cursor = (n<span class="pl-k">-</span><span class="pl-c1">1</span>)<span class="pl-k">*</span>FL_v<span class="pl-k">+</span><span class="pl-c1">1</span>;    <span class="pl-c">% initialize cursor</span>
+            m = n;                  <span class="pl-c">% initialize m</span>
+        <span class="pl-k">end</span>
+
+        <span class="pl-k">while</span> m<span class="pl-k"> == </span>n                <span class="pl-c">% cursor still point into current frame</span>
+            exc_syn(cursor) = <span class="pl-c1">1</span>;
+            cursor = cursor<span class="pl-k"> + </span>PT_t;   <span class="pl-c">% next cursor</span>
+            m = <span class="pl-k">ceil</span>(cursor<span class="pl-k">/</span>FL_v);    <span class="pl-c">% locate next cursor</span>
+        <span class="pl-k">end</span>
+
+        s_syn((n<span class="pl-k">-</span><span class="pl-c1">1</span>)<span class="pl-k">*</span>FL_v<span class="pl-k">+</span><span class="pl-c1">1</span><span class="pl-k">:</span>n<span class="pl-k">*</span>FL_v) = <span class="pl-k">filter</span>([<span class="pl-c1">1</span>,<span class="pl-k">zeros</span>(<span class="pl-c1">1</span>,P)],A_t,...
+            G<span class="pl-k">*</span>exc_syn((n<span class="pl-k">-</span><span class="pl-c1">1</span>)<span class="pl-k">*</span>FL_v<span class="pl-k">+</span><span class="pl-c1">1</span><span class="pl-k">:</span>n<span class="pl-k">*</span>FL_v));
+
+    <span class="pl-k">end</span>
+
+    <span class="pl-c">% 保存所有文件</span>
+    writespeech(<span class="pl-s"><span class="pl-pds">'</span>exc_syn_c.pcm<span class="pl-pds">'</span></span>,exc_syn);     <span class="pl-c">% _c means Combine both velocity and tone change</span>
+    writespeech(<span class="pl-s"><span class="pl-pds">'</span>syn_c.pcm<span class="pl-pds">'</span></span>,s_syn);
+
+    <span class="pl-c">% normalization</span>
+    s = <span class="pl-c1">normalize</span>(s);
+    s_syn = <span class="pl-c1">normalize</span>(s_syn);
+
+    <span class="pl-k">sound</span>(s_syn,<span class="pl-c1">8000</span>);
+    H = <span class="pl-c1">plot</span>(s_syn);<span class="pl-c1">title</span>(<span class="pl-s"><span class="pl-pds">'</span>"电灯比油灯进步多了"<span class="pl-pds">'</span></span>);
+
+<span class="pl-k">return</span>
+
+<span class="pl-c">% 从PCM文件中读入语音</span>
+<span class="pl-k">function</span> <span class="pl-v">s</span> = <span class="pl-en">readspeech</span>(filename, L)
+    fid = <span class="pl-k">fopen</span>(filename, <span class="pl-s"><span class="pl-pds">'</span>r<span class="pl-pds">'</span></span>);
+    s = <span class="pl-k">fread</span>(fid, L, <span class="pl-s"><span class="pl-pds">'</span>int16<span class="pl-pds">'</span></span>);
+    <span class="pl-k">fclose</span>(fid);
+<span class="pl-k">return</span>
+
+<span class="pl-c">% 写语音到PCM文件中</span>
+<span class="pl-k">function</span> <span class="pl-en">writespeech</span>(filename,s)
+    fid = <span class="pl-k">fopen</span>(filename,<span class="pl-s"><span class="pl-pds">'</span>w<span class="pl-pds">'</span></span>);
+    <span class="pl-k">fwrite</span>(fid, s, <span class="pl-s"><span class="pl-pds">'</span>int16<span class="pl-pds">'</span></span>);
+    <span class="pl-k">fclose</span>(fid);
+<span class="pl-k">return</span>
+
+<span class="pl-c">% 计算一段语音的基音周期，不要求掌握</span>
+<span class="pl-k">function</span> <span class="pl-v">PT</span> = <span class="pl-en">findpitch</span>(s)
+[B, A] = <span class="pl-c1">butter</span>(<span class="pl-c1">5</span>, <span class="pl-c1">700</span><span class="pl-k">/</span><span class="pl-c1">4000</span>);
+s = <span class="pl-k">filter</span>(B,A,s);
+R = <span class="pl-k">zeros</span>(<span class="pl-c1">143</span>,<span class="pl-c1">1</span>);
+<span class="pl-k">for</span> k=<span class="pl-c1">1</span><span class="pl-k">:</span><span class="pl-c1">143</span>
+    R(k) = s(<span class="pl-c1">144</span><span class="pl-k">:</span><span class="pl-c1">223</span>)<span class="pl-k">'</span><span class="pl-k">*</span>s(<span class="pl-c1">144</span><span class="pl-k">-</span>k<span class="pl-k">:</span><span class="pl-c1">223</span><span class="pl-k">-</span>k);
+<span class="pl-k">end</span>
+[R1,T1] = <span class="pl-k">max</span>(R(<span class="pl-c1">80</span><span class="pl-k">:</span><span class="pl-c1">143</span>));
+T1 = T1<span class="pl-k"> + </span><span class="pl-c1">79</span>;
+R1 = R1<span class="pl-k">/</span>(<span class="pl-k">norm</span>(s(<span class="pl-c1">144</span><span class="pl-k">-</span>T1<span class="pl-k">:</span><span class="pl-c1">223</span><span class="pl-k">-</span>T1))<span class="pl-k">+</span><span class="pl-c1">1</span>);
+[R2,T2] = <span class="pl-k">max</span>(R(<span class="pl-c1">40</span><span class="pl-k">:</span><span class="pl-c1">79</span>));
+T2 = T2<span class="pl-k"> + </span><span class="pl-c1">39</span>;
+R2 = R2<span class="pl-k">/</span>(<span class="pl-k">norm</span>(s(<span class="pl-c1">144</span><span class="pl-k">-</span>T2<span class="pl-k">:</span><span class="pl-c1">223</span><span class="pl-k">-</span>T2))<span class="pl-k">+</span><span class="pl-c1">1</span>);
+[R3,T3] = <span class="pl-k">max</span>(R(<span class="pl-c1">20</span><span class="pl-k">:</span><span class="pl-c1">39</span>));
+T3 = T3<span class="pl-k"> + </span><span class="pl-c1">19</span>;
+R3 = R3<span class="pl-k">/</span>(<span class="pl-k">norm</span>(s(<span class="pl-c1">144</span><span class="pl-k">-</span>T3<span class="pl-k">:</span><span class="pl-c1">223</span><span class="pl-k">-</span>T3))<span class="pl-k">+</span><span class="pl-c1">1</span>);
+Top = T1;
+Rop = R1;
+<span class="pl-k">if</span> R2<span class="pl-k"> &gt;</span>= <span class="pl-c1">0.85</span><span class="pl-k">*</span>Rop
+    Rop = R2;
+    Top = T2;
+<span class="pl-k">end</span>
+<span class="pl-k">if</span> R3<span class="pl-k"> &gt; </span><span class="pl-c1">0.85</span><span class="pl-k">*</span>Rop
+    Rop = R3;
+    Top = T3;
+<span class="pl-k">end</span>
+PT = Top;
+<span class="pl-k">return</span>
+
+</pre></div>
+</li>
+<li>
+<p><strong>参数测试</strong></p>
+
+<p>为了方便地进行<code>rv rt df</code>三个参数的调整, 不妨写一个简陋的<code>GUI</code>(<a href="src/gui.m">gui.m</a>)</p>
+
+<div class="highlight highlight-matlab"><pre><span class="pl-k">function</span> <span class="pl-v">varargout</span> = <span class="pl-en">gui</span>(<span class="pl-smi">varargin</span>)
+<span class="pl-c">% GUI MATLAB code for gui.fig</span>
+<span class="pl-c">%      GUI, by itself, creates a new GUI or raises the existing</span>
+<span class="pl-c">%      singleton*.</span>
+<span class="pl-c">%</span>
+<span class="pl-c">%      H = GUI returns the handle to a new GUI or the handle to</span>
+<span class="pl-c">%      the existing singleton*.</span>
+<span class="pl-c">%</span>
+<span class="pl-c">%      GUI('CALLBACK',hObject,eventData,handles,...) calls the local</span>
+<span class="pl-c">%      function named CALLBACK in GUI.M with the given input arguments.</span>
+<span class="pl-c">%</span>
+<span class="pl-c">%      GUI('Property','Value',...) creates a new GUI or raises the</span>
+<span class="pl-c">%      existing singleton*.  Starting from the left, property value pairs are</span>
+<span class="pl-c">%      applied to the GUI before gui_OpeningFcn gets called.  An</span>
+<span class="pl-c">%      unrecognized property name or invalid value makes property application</span>
+<span class="pl-c">%      stop.  All inputs are passed to gui_OpeningFcn via varargin.</span>
+<span class="pl-c">%</span>
+<span class="pl-c">%      *See GUI Options on GUIDE's Tools menu.  Choose "GUI allows only one</span>
+<span class="pl-c">%      instance to run (singleton)".</span>
+<span class="pl-c">%</span>
+<span class="pl-c">% See also: GUIDE, GUIDATA, GUIHANDLES</span>
+
+<span class="pl-c">% Edit the above text to modify the response to help gui</span>
+
+<span class="pl-c">% Last Modified by GUIDE v2.5 31-Jul-2015 22:09:11</span>
+
+<span class="pl-c">% Begin initialization code - DO NOT EDIT</span>
+gui_Singleton = <span class="pl-c1">1</span>;
+gui_State = <span class="pl-k">struct</span>(<span class="pl-s"><span class="pl-pds">'</span>gui_Name<span class="pl-pds">'</span></span>,       <span class="pl-k">mfilename</span>, ...
+                   <span class="pl-s"><span class="pl-pds">'</span>gui_Singleton<span class="pl-pds">'</span></span>,  gui_Singleton, ...
+                   <span class="pl-s"><span class="pl-pds">'</span>gui_OpeningFcn<span class="pl-pds">'</span></span>, @gui_OpeningFcn, ...
+                   <span class="pl-s"><span class="pl-pds">'</span>gui_OutputFcn<span class="pl-pds">'</span></span>,  @gui_OutputFcn, ...
+                   <span class="pl-s"><span class="pl-pds">'</span>gui_LayoutFcn<span class="pl-pds">'</span></span>,  [] , ...
+                   <span class="pl-s"><span class="pl-pds">'</span>gui_Callback<span class="pl-pds">'</span></span>,   []);
+<span class="pl-k">if</span> <span class="pl-smi">nargin</span><span class="pl-k"> &amp;&amp; </span><span class="pl-k">ischar</span>(<span class="pl-smi">varargin</span>{<span class="pl-c1">1</span>})
+    gui_State.gui_Callback = <span class="pl-k">str2func</span>(<span class="pl-smi">varargin</span>{<span class="pl-c1">1</span>});
+<span class="pl-k">end</span>
+
+<span class="pl-k">if</span> <span class="pl-smi">nargout</span>
+    [<span class="pl-smi">varargout</span>{<span class="pl-c1">1</span><span class="pl-k">:</span><span class="pl-smi">nargout</span>}] = gui_mainfcn(gui_State, <span class="pl-smi">varargin</span>{<span class="pl-k">:</span>});
+<span class="pl-k">else</span>
+    gui_mainfcn(gui_State, <span class="pl-smi">varargin</span>{<span class="pl-k">:</span>});
+<span class="pl-k">end</span>
+<span class="pl-c">% End initialization code - DO NOT EDIT</span>
+
+
+<span class="pl-c">% --- Executes just before gui is made visible.</span>
+<span class="pl-k">function</span> <span class="pl-en">gui_OpeningFcn</span>(hObject, eventdata, handles, <span class="pl-smi">varargin</span>)
+<span class="pl-c">% This function has no output args, see OutputFcn.</span>
+<span class="pl-c">% hObject    handle to figure</span>
+<span class="pl-c">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="pl-c">% handles    structure with handles and user data (see GUIDATA)</span>
+<span class="pl-c">% varargin   command line arguments to gui (see VARARGIN)</span>
+
+<span class="pl-c">% Choose default command line output for gui</span>
+handles.output = hObject;
+
+<span class="pl-c">% Initialize</span>
+handles.rv = <span class="pl-c1">1</span>;
+handles.rt = <span class="pl-c1">1</span>;
+handles.df = <span class="pl-c1">0</span>;
+
+<span class="pl-c">% Display text</span>
+handles.text_rv.String = [<span class="pl-s"><span class="pl-pds">'</span>速度比 rv = <span class="pl-pds">'</span></span>,<span class="pl-k">num2str</span>(handles.rv)];
+handles.text_rt.String = [<span class="pl-s"><span class="pl-pds">'</span>基音频率比 rt = <span class="pl-pds">'</span></span>,<span class="pl-k">num2str</span>(handles.rt)];
+handles.text_df.String = [<span class="pl-s"><span class="pl-pds">'</span>共振峰频率偏移量 df = <span class="pl-pds">'</span></span>,<span class="pl-k">num2str</span>(handles.df)];
+
+<span class="pl-c">% Update handles structure</span>
+<span class="pl-c1">guidata</span>(hObject, handles);
+
+<span class="pl-c">% UIWAIT makes gui wait for user response (see UIRESUME)</span>
+<span class="pl-c">% uiwait(handles.figure1);</span>
+
+
+<span class="pl-c">% --- Outputs from this function are returned to the command line.</span>
+<span class="pl-k">function</span> <span class="pl-v">varargout</span> = <span class="pl-en">gui_OutputFcn</span>(hObject, eventdata, handles) 
+<span class="pl-c">% varargout  cell array for returning output args (see VARARGOUT);</span>
+<span class="pl-c">% hObject    handle to figure</span>
+<span class="pl-c">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="pl-c">% handles    structure with handles and user data (see GUIDATA)</span>
+
+<span class="pl-c">% Get default command line output from handles structure</span>
+<span class="pl-smi">varargout</span>{<span class="pl-c1">1</span>} = handles.output;
+
+
+<span class="pl-c">% --- Executes on slider movement.</span>
+<span class="pl-k">function</span> <span class="pl-en">slider_rv_Callback</span>(hObject, eventdata, handles)
+<span class="pl-c">% hObject    handle to slider_rv (see GCBO)</span>
+<span class="pl-c">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="pl-c">% handles    structure with handles and user data (see GUIDATA)</span>
+
+<span class="pl-c">% Hints: get(hObject,'Value') returns position of slider</span>
+<span class="pl-c">%        get(hObject,'Min') and get(hObject,'Max') to determine range of slider</span>
+
+handles.rv = <span class="pl-c1">get</span>(hObject,<span class="pl-s"><span class="pl-pds">'</span>Value<span class="pl-pds">'</span></span>);
+handles.text_rv.String = [<span class="pl-s"><span class="pl-pds">'</span>速度比 rv = <span class="pl-pds">'</span></span>,<span class="pl-k">num2str</span>(handles.rv)];
+
+<span class="pl-c1">guidata</span>(hObject,handles);
+
+<span class="pl-c">% --- Executes during object creation, after setting all properties.</span>
+<span class="pl-k">function</span> <span class="pl-en">slider_rv_CreateFcn</span>(hObject, eventdata, handles)
+<span class="pl-c">% hObject    handle to slider_rv (see GCBO)</span>
+<span class="pl-c">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="pl-c">% handles    empty - handles not created until after all CreateFcns called</span>
+
+<span class="pl-c">% Hint: slider controls usually have a light gray background.</span>
+<span class="pl-k">if</span> <span class="pl-k">isequal</span>(<span class="pl-c1">get</span>(hObject,<span class="pl-s"><span class="pl-pds">'</span>BackgroundColor<span class="pl-pds">'</span></span>), <span class="pl-c1">get</span>(<span class="pl-c1">0</span>,<span class="pl-s"><span class="pl-pds">'</span>defaultUicontrolBackgroundColor<span class="pl-pds">'</span></span>))
+    <span class="pl-c1">set</span>(hObject,<span class="pl-s"><span class="pl-pds">'</span>BackgroundColor<span class="pl-pds">'</span></span>,[<span class="pl-c1">.9</span> <span class="pl-c1">.9</span> <span class="pl-c1">.9</span>]);
+<span class="pl-k">end</span>
+
+
+<span class="pl-c">% --- Executes on slider movement.</span>
+<span class="pl-k">function</span> <span class="pl-en">slider_rt_Callback</span>(hObject, eventdata, handles)
+<span class="pl-c">% hObject    handle to slider_rt (see GCBO)</span>
+<span class="pl-c">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="pl-c">% handles    structure with handles and user data (see GUIDATA)</span>
+
+<span class="pl-c">% Hints: get(hObject,'Value') returns position of slider</span>
+<span class="pl-c">%        get(hObject,'Min') and get(hObject,'Max') to determine range of slider</span>
+
+handles.rt = <span class="pl-c1">get</span>(hObject,<span class="pl-s"><span class="pl-pds">'</span>Value<span class="pl-pds">'</span></span>);
+handles.text_rt.String = [<span class="pl-s"><span class="pl-pds">'</span>基音频率比 rt = <span class="pl-pds">'</span></span>,<span class="pl-k">num2str</span>(handles.rt)];
+
+<span class="pl-c1">guidata</span>(hObject,handles);
+
+<span class="pl-c">% --- Executes during object creation, after setting all properties.</span>
+<span class="pl-k">function</span> <span class="pl-en">slider_rt_CreateFcn</span>(hObject, eventdata, handles)
+<span class="pl-c">% hObject    handle to slider_rt (see GCBO)</span>
+<span class="pl-c">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="pl-c">% handles    empty - handles not created until after all CreateFcns called</span>
+
+<span class="pl-c">% Hint: slider controls usually have a light gray background.</span>
+<span class="pl-k">if</span> <span class="pl-k">isequal</span>(<span class="pl-c1">get</span>(hObject,<span class="pl-s"><span class="pl-pds">'</span>BackgroundColor<span class="pl-pds">'</span></span>), <span class="pl-c1">get</span>(<span class="pl-c1">0</span>,<span class="pl-s"><span class="pl-pds">'</span>defaultUicontrolBackgroundColor<span class="pl-pds">'</span></span>))
+    <span class="pl-c1">set</span>(hObject,<span class="pl-s"><span class="pl-pds">'</span>BackgroundColor<span class="pl-pds">'</span></span>,[<span class="pl-c1">.9</span> <span class="pl-c1">.9</span> <span class="pl-c1">.9</span>]);
+<span class="pl-k">end</span>
+
+
+<span class="pl-c">% --- Executes on slider movement.</span>
+<span class="pl-k">function</span> <span class="pl-en">slider_df_Callback</span>(hObject, eventdata, handles)
+<span class="pl-c">% hObject    handle to slider_df (see GCBO)</span>
+<span class="pl-c">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="pl-c">% handles    structure with handles and user data (see GUIDATA)</span>
+
+<span class="pl-c">% Hints: get(hObject,'Value') returns position of slider</span>
+<span class="pl-c">%        get(hObject,'Min') and get(hObject,'Max') to determine range of slider</span>
+
+handles.df = <span class="pl-c1">get</span>(hObject,<span class="pl-s"><span class="pl-pds">'</span>Value<span class="pl-pds">'</span></span>);
+handles.text_df.String = [<span class="pl-s"><span class="pl-pds">'</span>共振峰频率偏移量 df = <span class="pl-pds">'</span></span>,<span class="pl-k">num2str</span>(handles.df)];
+
+<span class="pl-c1">guidata</span>(hObject,handles);
+
+<span class="pl-c">% --- Executes during object creation, after setting all properties.</span>
+<span class="pl-k">function</span> <span class="pl-en">slider_df_CreateFcn</span>(hObject, eventdata, handles)
+<span class="pl-c">% hObject    handle to slider_df (see GCBO)</span>
+<span class="pl-c">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="pl-c">% handles    empty - handles not created until after all CreateFcns called</span>
+
+<span class="pl-c">% Hint: slider controls usually have a light gray background.</span>
+<span class="pl-k">if</span> <span class="pl-k">isequal</span>(<span class="pl-c1">get</span>(hObject,<span class="pl-s"><span class="pl-pds">'</span>BackgroundColor<span class="pl-pds">'</span></span>), <span class="pl-c1">get</span>(<span class="pl-c1">0</span>,<span class="pl-s"><span class="pl-pds">'</span>defaultUicontrolBackgroundColor<span class="pl-pds">'</span></span>))
+    <span class="pl-c1">set</span>(hObject,<span class="pl-s"><span class="pl-pds">'</span>BackgroundColor<span class="pl-pds">'</span></span>,[<span class="pl-c1">.9</span> <span class="pl-c1">.9</span> <span class="pl-c1">.9</span>]);
+<span class="pl-k">end</span>
+
+
+<span class="pl-c">% --- Executes on button press in button_sound.</span>
+<span class="pl-k">function</span> <span class="pl-en">button_sound_Callback</span>(hObject, eventdata, handles)
+<span class="pl-c">% hObject    handle to button_sound (see GCBO)</span>
+<span class="pl-c">% eventdata  reserved - to be defined in a future version of MATLAB</span>
+<span class="pl-c">% handles    structure with handles and user data (see GUIDATA)</span>
+
+handles.axes1 = speechproc1(handles.rv,handles.rt,handles.df);
+
+<span class="pl-c1">guidata</span>(hObject,handles);</pre></div>
+
+<p><strong>效果如下</strong></p>
+
+<p><a href="pic/gui.png" target="_blank"><img src="pic/gui.png" alt="gui" style="max-width:100%;"></a></p>
+
+<ul>
+<li><p>拖动滑块即可改变参数</p></li>
+<li><p>按下<code>Sound</code>键可以听到声音, 并绘制出波形</p></li>
+</ul>
+</li>
+</ol>
+
+<h2>
+<a id="user-content-写在最后" class="anchor" href="#%E5%86%99%E5%9C%A8%E6%9C%80%E5%90%8E" aria-hidden="true"><span class="octicon octicon-link"></span></a>写在最后</h2>
+
+<ul>
+<li><p>语音合成作业相比于音乐合成简单不少(因为最复杂的求<strong>基音周期</strong>已经实现好了), 熟练掌握了<code>filter</code>函数的用法</p></li>
+<li><p>简单了解了<strong>GUI</strong>的原理, 实现了简单的<strong>GUI</strong>程序</p></li>
+</ul>
+</article></body></html>
