@@ -1,5 +1,10 @@
-# speech-synthesizer
-Homework No.2 for summer course: MATLAB
+# 语音合成大作业
+
+郭一隆 无36 2013011189
+
+# 原创性声明
+
+**完全原创**
 
 ## 语音预测模型
 
@@ -182,6 +187,10 @@ Homework No.2 for summer course: MATLAB
     PT = Top;
     return
     ```
+
+    **speechproc函数的系统框图**
+
+    ![系统框图](pic/structure-speechproc.png)
 
 3. 在`speechproc`运行至第27帧时观察预测系统的**零极点图**
 
@@ -904,3 +913,9 @@ Homework No.2 for summer course: MATLAB
 
     * 按下`Sound`键可以听到声音, 并绘制出波形
 
+
+## 写在最后
+
+* 语音合成作业相比于音乐合成简单不少(因为最复杂的求**基音周期**已经实现好了), 熟练掌握了`filter`函数的用法
+
+* 简单了解了**GUI**的原理, 实现了简单的**GUI**程序
