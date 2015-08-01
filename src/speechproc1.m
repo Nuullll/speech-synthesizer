@@ -16,8 +16,7 @@ function H = speechproc1(rv,rt,df)
     % 预测和重建滤波器
     exc = zeros(L,1);       % 激励信号（预测误差）
     zi_pre = zeros(P,1);    % 预测滤波器的状态
-    s_rec = zeros(L,1);     % 重建语音
-    zi_rec = zeros(P,1);
+    zi_syn = zeros(P,1);
     % 合成滤波器
     exc_syn = zeros(ceil(L/rv),1);   % 合成的激励信号（脉冲串）
     s_syn = zeros(ceil(L/rv),1);     % 合成语音
@@ -61,8 +60,8 @@ function H = speechproc1(rv,rt,df)
             m = ceil(cursor/FL_v);    % locate next cursor
         end
         
-        s_syn((n-1)*FL_v+1:n*FL_v) = filter([1,zeros(1,P)],A_t,...
-            G*exc_syn((n-1)*FL_v+1:n*FL_v));
+        [s_syn((n-1)*FL_v+1:n*FL_v),zi_syn] = filter([1,zeros(1,P)],A_t,...
+            G*exc_syn((n-1)*FL_v+1:n*FL_v),zi_syn);
         
     end
 

@@ -15,12 +15,15 @@ function speechproc()
     % 合成滤波器
     exc_syn = zeros(L,1);   % 合成的激励信号（脉冲串）
     s_syn = zeros(L,1);     % 合成语音
+    zi_syn = zeros(P,1);
     % 变调不变速滤波器
     exc_syn_t = zeros(L,1);   % 合成的激励信号（脉冲串）
     s_syn_t = zeros(L,1);     % 合成语音
+    zi_syn_t = zeros(P,1);
     % 变速不变调滤波器（假设速度减慢一倍）
     exc_syn_v = zeros(2*L,1);   % 合成的激励信号（脉冲串）
     s_syn_v = zeros(2*L,1);     % 合成语音
+    zi_syn_v = zeros(P,1);
 
     hw = hamming(WL);       % 汉明窗
     
@@ -69,8 +72,8 @@ function speechproc()
             m = ceil(cursor/FL);    % locate next cursor
         end
         
-        s_syn((n-1)*FL+1:n*FL) = filter([1,zeros(1,P)],A,...
-            G*exc_syn((n-1)*FL+1:n*FL));
+        [s_syn((n-1)*FL+1:n*FL),zi_syn] = filter([1,zeros(1,P)],A,...
+            G*exc_syn((n-1)*FL+1:n*FL),zi_syn);
         % exc_syn((n-1)*FL+1:n*FL) = ... 将你计算得到的合成激励写在这里
         % s_syn((n-1)*FL+1:n*FL) = ...   将你计算得到的合成语音写在这里
 
@@ -88,8 +91,8 @@ function speechproc()
             m_v = ceil(cursor_v/FL_v);    % locate next cursor
         end
         
-        s_syn_v((n-1)*FL_v+1:n*FL_v) = filter([1,zeros(1,P)],A,...
-            G*exc_syn_v((n-1)*FL_v+1:n*FL_v));
+        [s_syn_v((n-1)*FL_v+1:n*FL_v),zi_syn_v] = filter([1,zeros(1,P)],A,...
+            G*exc_syn_v((n-1)*FL_v+1:n*FL_v),zi_syn_v);
         % exc_syn_v((n-1)*FL_v+1:n*FL_v) = ... 将你计算得到的加长合成激励写在这里
         % s_syn_v((n-1)*FL_v+1:n*FL_v) = ...   将你计算得到的加长合成语音写在这里
         
@@ -106,8 +109,8 @@ function speechproc()
             m_t = ceil(cursor_t/FL);    % locate next cursor
         end
         A_t = changetone(A,150,8000);   % ff += 150
-        s_syn_t((n-1)*FL+1:n*FL) = filter([1,zeros(1,P)],A_t,...
-            G*exc_syn_t((n-1)*FL+1:n*FL));
+        [s_syn_t((n-1)*FL+1:n*FL),zi_syn_t] = filter([1,zeros(1,P)],A_t,...
+            G*exc_syn_t((n-1)*FL+1:n*FL),zi_syn_t);
         % exc_syn_t((n-1)*FL+1:n*FL) = ... 将你计算得到的变调合成激励写在这里
         % s_syn_t((n-1)*FL+1:n*FL) = ...   将你计算得到的变调合成语音写在这里
         
