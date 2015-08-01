@@ -915,12 +915,12 @@ MathJax.Hub.Config({
 <li>
 <p>绘制<strong>零极点图</strong>, <code>zplane(Z,P)</code></p>
 
-<p><a href="pic/zplane.png" target="_blank"><img src="pic/zplane.png" alt="零极点图" style="max-width:100%;"></a></p>
+<p><a href="///G://Vone/Tsinghua/2015summer/matlab/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90/speech-synthesizer/pic/zplane.png" target="_blank"><img src="///G://Vone/Tsinghua/2015summer/matlab/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90/speech-synthesizer/pic/zplane.png" alt="零极点图" style="max-width:100%;"></a></p>
 </li>
 <li>
 <p>绘制<strong>频率响应</strong>, <code>freqz(b,a,512,fs)</code></p>
 
-<p><a href="pic/freqz.png" target="_blank"><img src="pic/freqz.png" alt="频率响应" style="max-width:100%;"></a></p>
+<p><a href="///G://Vone/Tsinghua/2015summer/matlab/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90/speech-synthesizer/pic/freqz.png" target="_blank"><img src="///G://Vone/Tsinghua/2015summer/matlab/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90/speech-synthesizer/pic/freqz.png" alt="频率响应" style="max-width:100%;"></a></p>
 
 <p>从频率响应图中也可直观地看出<strong>共振峰频率</strong>在1000Hz附近</p>
 </li>
@@ -931,7 +931,7 @@ MathJax.Hub.Config({
 <li>
 <p><code>impz(b,a,512,fs)</code></p>
 
-<p><a href="pic/impz.png" target="_blank"><img src="pic/impz.png" alt="impz" style="max-width:100%;"></a></p>
+<p><a href="///G://Vone/Tsinghua/2015summer/matlab/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90/speech-synthesizer/pic/impz.png" target="_blank"><img src="///G://Vone/Tsinghua/2015summer/matlab/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90/speech-synthesizer/pic/impz.png" alt="impz" style="max-width:100%;"></a></p>
 </li>
 <li>
 <p><code>filter</code></p>
@@ -941,7 +941,7 @@ x(<span class="pl-c1">1</span>) = <span class="pl-c1">1</span>;
 y = <span class="pl-k">filter</span>(b,a,x);
 <span class="pl-c1">stem</span>(<span class="pl-c1">0</span><span class="pl-k">:</span><span class="pl-c1">1</span><span class="pl-k">/</span>fs<span class="pl-k">:</span><span class="pl-c1">511</span><span class="pl-k">/</span>fs,y);</pre></div>
 
-<p><a href="pic/filter.png" target="_blank"><img src="pic/filter.png" alt="filter" style="max-width:100%;"></a></p>
+<p><a href="///G://Vone/Tsinghua/2015summer/matlab/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90/speech-synthesizer/pic/filter.png" target="_blank"><img src="///G://Vone/Tsinghua/2015summer/matlab/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90/speech-synthesizer/pic/filter.png" alt="filter" style="max-width:100%;"></a></p>
 
 <p><strong>与impz画出的结果相同</strong></p>
 </li>
@@ -950,7 +950,7 @@ y = <span class="pl-k">filter</span>(b,a,x);
 </ol>
 </li>
 <li>
-<p>阅读<a href="src/speechproc.m">speechproc.m</a></p>
+<p>阅读<a href="///G://Vone/Tsinghua/2015summer/matlab/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90/speech-synthesizer/src/speechproc.m">speechproc.m</a></p>
 
 <div class="highlight highlight-matlab"><pre><span class="pl-k">function</span> <span class="pl-en">speechproc</span>()
 
@@ -1091,7 +1091,7 @@ PT = Top;
 
 <p><strong>speechproc函数的系统框图</strong></p>
 
-<p><a href="pic/structure-speechproc.png" target="_blank"><img src="pic/structure-speechproc.png" alt="系统框图" style="max-width:100%;"></a></p>
+<p><a href="///G://Vone/Tsinghua/2015summer/matlab/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90/speech-synthesizer/pic/structure-speechproc.png" target="_blank"><img src="///G://Vone/Tsinghua/2015summer/matlab/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90/speech-synthesizer/pic/structure-speechproc.png" alt="系统框图" style="max-width:100%;"></a></p>
 </li>
 <li>
 <p>在<code>speechproc</code>运行至第27帧时观察预测系统的<strong>零极点图</strong></p>
@@ -1122,7 +1122,7 @@ PT = Top;
     <span class="pl-c1">title</span>(<span class="pl-s"><span class="pl-pds">'</span>预测系统零极点图(第27帧)<span class="pl-pds">'</span></span>);
 <span class="pl-k">end</span></pre></div>
 
-<p><a href="pic/zplane-pre27.png" target="_blank"><img src="pic/zplane-pre27.png" alt="预测系统第27帧零极点图" style="max-width:100%;"></a></p>
+<p><a href="///G://Vone/Tsinghua/2015summer/matlab/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90/speech-synthesizer/pic/zplane-pre27.png" target="_blank"><img src="///G://Vone/Tsinghua/2015summer/matlab/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90/speech-synthesizer/pic/zplane-pre27.png" alt="预测系统第27帧零极点图" style="max-width:100%;"></a></p>
 </li>
 <li>
 <p>在循环中添加程序: 对每帧语音信号$s(n)$和预测模型系数${a_i}$, 用<code>filter</code>计算激励信号$e(n)$. <strong>注意: 在系数变化的情况下连续滤波, 需维持滤波器的状态不变</strong></p>
@@ -1133,7 +1133,7 @@ exc((n<span class="pl-k">-</span><span class="pl-c1">1</span>)<span class="pl-k"
 <span class="pl-c">% exc((n-1)*FL+1:n*FL) = ... 将你计算得到的激励写在这里</span></pre></div>
 </li>
 <li>
-<p>完善<a href="src/speechproc.m">speechproc.m</a>程序, 在循环中添加程序: 用你计算得到的激励信号$e(n)$和预测模型系数${a_i}$, 用<code>filter</code>计算重建语音$\hat{s}(n)$. <strong>同样要注意维持滤波器的状态不变</strong></p>
+<p>完善<a href="///G://Vone/Tsinghua/2015summer/matlab/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90/speech-synthesizer/src/speechproc.m">speechproc.m</a>程序, 在循环中添加程序: 用你计算得到的激励信号$e(n)$和预测模型系数${a_i}$, 用<code>filter</code>计算重建语音$\hat{s}(n)$. <strong>同样要注意维持滤波器的状态不变</strong></p>
 
 <p>对于<strong>语音重建模型</strong> $$\hat{s}(n)=x(n)+\sum_{k=1}^{N}a_k \hat{s}(n-k)$$</p>
 
@@ -1145,7 +1145,7 @@ s_rec((n<span class="pl-k">-</span><span class="pl-c1">1</span>)<span class="pl-
 <span class="pl-c">% s_rec((n-1)*FL+1:n*FL) = ... 将你计算得到的重建语音写在这里</span></pre></div>
 </li>
 <li>
-<p>对比<strong>归一化</strong>(<a href="src/normalize.m">normalize.m</a>)后的$e(n)$, $s(n)$以及$\hat{s}(n)$信号</p>
+<p>对比<strong>归一化</strong>(<a href="///G://Vone/Tsinghua/2015summer/matlab/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90/speech-synthesizer/src/normalize.m">normalize.m</a>)后的$e(n)$, $s(n)$以及$\hat{s}(n)$信号</p>
 
 <div class="highlight highlight-matlab"><pre><span class="pl-c">% normalization</span>
 s = <span class="pl-c1">normalize</span>(s);
@@ -1172,7 +1172,7 @@ s_rec = <span class="pl-c1">normalize</span>(s_rec);
 
 <p><strong>整体波形</strong></p>
 
-<p><a href="pic/whole.png" target="_blank"><img src="pic/whole.png" alt="整体" style="max-width:100%;"></a></p>
+<p><a href="///G://Vone/Tsinghua/2015summer/matlab/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90/speech-synthesizer/pic/whole.png" target="_blank"><img src="///G://Vone/Tsinghua/2015summer/matlab/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90/speech-synthesizer/pic/whole.png" alt="整体" style="max-width:100%;"></a></p>
 
 <ul>
 <li><p>$s(n)$和$\hat{s}(n)$波形包络基本一致, $e(n)$则不同</p></li>
@@ -1181,7 +1181,7 @@ s_rec = <span class="pl-c1">normalize</span>(s_rec);
 
 <p><strong>局部波形</strong></p>
 
-<p><a href="pic/part.png" target="_blank"><img src="pic/part.png" alt="局部" style="max-width:100%;"></a></p>
+<p><a href="///G://Vone/Tsinghua/2015summer/matlab/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90/speech-synthesizer/pic/part.png" target="_blank"><img src="///G://Vone/Tsinghua/2015summer/matlab/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90/speech-synthesizer/pic/part.png" alt="局部" style="max-width:100%;"></a></p>
 
 <ul>
 <li><p>$s(n)$和$\hat{s}(n)$波形完全重合(黑色的$s(n)$被蓝色的$\hat{s}(n)$覆盖)</p></li>
@@ -1200,7 +1200,7 @@ s_rec = <span class="pl-c1">normalize</span>(s_rec);
 
 <p>则式中$N=\frac{f_s}{f}=40$, $NS=Tf=200$</p>
 
-<p>单位样值"串"即每隔一定间隔$N$有一脉冲(幅度为1), 其余位置取值为0, 则可以通过以下方法生成$x(n)$ (<a href="src/impulsestring.m">impulsestring.m</a>)</p>
+<p>单位样值"串"即每隔一定间隔$N$有一脉冲(幅度为1), 其余位置取值为0, 则可以通过以下方法生成$x(n)$ (<a href="///G://Vone/Tsinghua/2015summer/matlab/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90/speech-synthesizer/src/impulsestring.m">impulsestring.m</a>)</p>
 
 <div class="highlight highlight-matlab"><pre><span class="pl-k">function</span> <span class="pl-v">x</span> = <span class="pl-en">impulsestring</span>(T,f,fs)
 <span class="pl-c">%Generate impulse string</span>
@@ -1233,14 +1233,14 @@ NS = <span class="pl-k">round</span>(T<span class="pl-k">*</span>f);            
 <li><p>300Hz单位样值串音调更高</p></li>
 </ul>
 
-<p><a href="pic/impulsestring.png" target="_blank"><img src="pic/impulsestring.png" alt="对比单位样值串" style="max-width:100%;"></a></p>
+<p><a href="///G://Vone/Tsinghua/2015summer/matlab/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90/speech-synthesizer/pic/impulsestring.png" target="_blank"><img src="///G://Vone/Tsinghua/2015summer/matlab/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90/speech-synthesizer/pic/impulsestring.png" alt="对比单位样值串" style="max-width:100%;"></a></p>
 </li>
 <li>
 <p><strong>(练习8)</strong> 真实语音信号的基音周期总是随时间变化的. 我们首先将信号分成若干个10毫秒长的段, 假设每个段内基音周期固定不变, 但段和段之间则不同, 具体为 $$PT=80+5mod(m,50)$$</p>
 
 <p>其中$PT$表示基因周期, $m$表示段序号, <strong>相邻两脉冲的间隔由前一个脉冲所在的段序号决定</strong></p>
 
-<p>生成时长为1秒钟的上述信号(<a href="src/pitchtest.m">pitchtest.m</a>): </p>
+<p>生成时长为1秒钟的上述信号(<a href="///G://Vone/Tsinghua/2015summer/matlab/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90/speech-synthesizer/src/pitchtest.m">pitchtest.m</a>): </p>
 
 <div class="highlight highlight-matlab"><pre>x = <span class="pl-k">zeros</span>(<span class="pl-c1">8000</span>,<span class="pl-c1">1</span>);
 cursor = <span class="pl-c1">1</span>;
@@ -1253,7 +1253,7 @@ m = <span class="pl-c1">1</span>;          <span class="pl-c">% index of slice</
 <span class="pl-c1">figure</span>;
 <span class="pl-c1">stem</span>(<span class="pl-c1">0</span><span class="pl-k">:</span><span class="pl-c1">8000</span><span class="pl-k">-</span><span class="pl-c1">1</span>,x);</pre></div>
 
-<p><a href="pic/pitch-time-variant.png" target="_blank"><img src="pic/pitch-time-variant.png" alt="基音周期变化的信号" style="max-width:100%;"></a></p>
+<p><a href="///G://Vone/Tsinghua/2015summer/matlab/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90/speech-synthesizer/pic/pitch-time-variant.png" target="_blank"><img src="///G://Vone/Tsinghua/2015summer/matlab/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90/speech-synthesizer/pic/pitch-time-variant.png" alt="基音周期变化的信号" style="max-width:100%;"></a></p>
 
 <p><strong>试听</strong></p>
 
@@ -1275,10 +1275,10 @@ m = <span class="pl-c1">1</span>;          <span class="pl-c">% index of slice</
 <li><p>经过滤波器后<strong>音调</strong>似乎变低沉了一些</p></li>
 </ul>
 
-<p><a href="pic/before-after.png" target="_blank"><img src="pic/before-after.png" alt="滤波前后对比" style="max-width:100%;"></a></p>
+<p><a href="///G://Vone/Tsinghua/2015summer/matlab/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90/speech-synthesizer/pic/before-after.png" target="_blank"><img src="///G://Vone/Tsinghua/2015summer/matlab/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90/speech-synthesizer/pic/before-after.png" alt="滤波前后对比" style="max-width:100%;"></a></p>
 </li>
 <li>
-<p><strong>(练习10)</strong> 重改<a href="src/speechproc.m">speechproc.m</a>程序. 利用每一帧已经计算得到的基音周期和<strong>(8)</strong>的方法, 生成合成激励信号$G x(n)$, 用<code>filter</code>函数将$G x(n)$送入合成滤波器得到合成语音$\hat{s}(n)$</p>
+<p><strong>(练习10)</strong> 重改<a href="///G://Vone/Tsinghua/2015summer/matlab/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90/speech-synthesizer/src/speechproc.m">speechproc.m</a>程序. 利用每一帧已经计算得到的基音周期和<strong>(8)</strong>的方法, 生成合成激励信号$G x(n)$, 用<code>filter</code>函数将$G x(n)$送入合成滤波器得到合成语音$\tilde{s}(n)$</p>
 
 <div class="highlight highlight-matlab"><pre><span class="pl-c">% (10) 在此位置写程序，生成合成激励，并用激励和filter函数产生合成语音</span>
 
@@ -1303,13 +1303,12 @@ s_syn((n<span class="pl-k">-</span><span class="pl-c1">1</span>)<span class="pl-
 
 <ul>
 <li><p>可以听出合成信号语音的内容</p></li>
-<li><p>语音的清晰度不如原语音, 有杂音</p></li>
-<li><p>音调低沉, 比较压抑, 有种<strong>收音机</strong>的厚重感</p></li>
+<li><p>有些单薄, 略有杂音</p></li>
 </ul>
 
 <p><strong>波形比较</strong></p>
 
-<p><a href="pic/syn.png" target="_blank"><img src="pic/syn.png" alt="合成音" style="max-width:100%;"></a></p>
+<p><a href="///G://Vone/Tsinghua/2015summer/matlab/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90/speech-synthesizer/pic/syn.png" target="_blank"><img src="///G://Vone/Tsinghua/2015summer/matlab/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90/speech-synthesizer/pic/syn.png" alt="合成音" style="max-width:100%;"></a></p>
 
 <ul>
 <li><p>波形包络基本相同</p></li>
@@ -1323,7 +1322,7 @@ s_syn((n<span class="pl-k">-</span><span class="pl-c1">1</span>)<span class="pl-
 
 <ol>
 <li>
-<p><strong>(练习11)</strong> 仿照<strong>(10)</strong>重改<a href="src/speechproc.m">speechproc.m</a>程序, 只不过将<strong>(10)</strong>中合成激励的长度增加一倍, 即原来10毫秒的一帧变成了20毫秒一帧, 再用同样的方法合成出语音<code>s_syn_v</code></p>
+<p><strong>(练习11)</strong> 仿照<strong>(10)</strong>重改<a href="///G://Vone/Tsinghua/2015summer/matlab/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90/speech-synthesizer/src/speechproc.m">speechproc.m</a>程序, 只不过将<strong>(10)</strong>中合成激励的长度增加一倍, 即原来10毫秒的一帧变成了20毫秒一帧, 再用同样的方法合成出语音<code>s_syn_v</code></p>
 
 <div class="highlight highlight-matlab"><pre><span class="pl-c">% (11) 不改变基音周期和预测系数，将合成激励的长度增加一倍，再作为filter</span>
 <span class="pl-c">% 的输入得到新的合成语音，听一听是不是速度变慢了，但音调没有变。</span>
@@ -1352,7 +1351,7 @@ s_syn_v((n<span class="pl-k">-</span><span class="pl-c1">1</span>)<span class="p
 <li>在合成信号<code>s_syn</code>的基础上, <code>s_syn_v</code>速度变为原来的一半, 而音调没有变化</li>
 </ul>
 
-<p><a href="pic/half-velocity.png" target="_blank"><img src="pic/half-velocity.png" alt="半速原调" style="max-width:100%;"></a></p>
+<p><a href="///G://Vone/Tsinghua/2015summer/matlab/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90/speech-synthesizer/pic/half-velocity.png" target="_blank"><img src="///G://Vone/Tsinghua/2015summer/matlab/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90/speech-synthesizer/pic/half-velocity.png" alt="半速原调" style="max-width:100%;"></a></p>
 </li>
 </ol>
 
@@ -1367,7 +1366,7 @@ s_syn_v((n<span class="pl-k">-</span><span class="pl-c1">1</span>)<span class="p
 
 <p>因此需通过<strong>旋转极点</strong>(改变幅角)改变共振峰频率</p>
 
-<p>定义<code>rotatez</code>函数用以旋转复数(<a href="src/rotatez.m">rotatez.m</a>)</p>
+<p>定义<code>rotatez</code>函数用以旋转复数(<a href="///G://Vone/Tsinghua/2015summer/matlab/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90/speech-synthesizer/src/rotatez.m">rotatez.m</a>)</p>
 
 <div class="highlight highlight-matlab"><pre><span class="pl-k">function</span> <span class="pl-v">zr</span> = <span class="pl-en">rotatez</span>(z,rad)
 <span class="pl-c">%Rotate complex number z by rad counterclockwisely</span>
@@ -1378,7 +1377,7 @@ zr = z<span class="pl-k">*</span><span class="pl-k">exp</span>(rad<span class="p
 
 <p>则共振峰频率变化量为 $$\Delta f = \frac{\Delta Arg(p)}{2\pi} f_s$$</p>
 
-<p>定义<code>changetone</code>函数(<a href="src/changetone.m">changetone.m</a>)</p>
+<p>定义<code>changetone</code>函数(<a href="///G://Vone/Tsinghua/2015summer/matlab/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90/speech-synthesizer/src/changetone.m">changetone.m</a>)</p>
 
 <div class="highlight highlight-matlab"><pre><span class="pl-k">function</span> <span class="pl-v">A</span> = <span class="pl-en">changetone</span>(a,df,fs)
 <span class="pl-c">%A = changetong(a,df,fs)</span>
@@ -1410,7 +1409,7 @@ a_t <span class="pl-ii">=</span>
 
 <ul>
 <li>
-<p>绘制<strong>零极点图</strong> (<a href="src/zplane_changetone.m">zplane_changetone.m</a>)</p>
+<p>绘制<strong>零极点图</strong> (<a href="///G://Vone/Tsinghua/2015summer/matlab/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90/speech-synthesizer/src/zplane_changetone.m">zplane_changetone.m</a>)</p>
 
 <div class="highlight highlight-matlab"><pre>[Z,P,~]=<span class="pl-c1">tf2zp</span>(b,a);
 [Z_t,P_t,~]=<span class="pl-c1">tf2zp</span>(b,a_t);
@@ -1425,12 +1424,12 @@ a_t <span class="pl-ii">=</span>
 <span class="pl-c1">legend</span>([Hp1,Hp2],<span class="pl-s"><span class="pl-pds">'</span>原系统<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>变调系统<span class="pl-pds">'</span></span>);
 <span class="pl-c1">title</span>(<span class="pl-s"><span class="pl-pds">'</span>旋转极点<span class="pl-pds">'</span></span>);</pre></div>
 
-<p><a href="pic/rotate-poles.png" target="_blank"><img src="pic/rotate-poles.png" alt="旋转极点" style="max-width:100%;"></a></p>
+<p><a href="///G://Vone/Tsinghua/2015summer/matlab/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90/speech-synthesizer/pic/rotate-poles.png" target="_blank"><img src="///G://Vone/Tsinghua/2015summer/matlab/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90/speech-synthesizer/pic/rotate-poles.png" alt="旋转极点" style="max-width:100%;"></a></p>
 
 <p><strong>极点幅角绝对值变大, 共振峰频率增大</strong></p>
 </li>
 <li>
-<p>绘制<strong>频率响应</strong> (<a href="src/freqz_changetone.m">freqz_changetone.m</a>)</p>
+<p>绘制<strong>频率响应</strong> (<a href="///G://Vone/Tsinghua/2015summer/matlab/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90/speech-synthesizer/src/freqz_changetone.m">freqz_changetone.m</a>)</p>
 
 <div class="highlight highlight-matlab"><pre>[H,F]=<span class="pl-c1">freqz</span>(b,a,<span class="pl-c1">512</span>,fs);
 [H_t,F_t]=<span class="pl-c1">freqz</span>(b,a_t,<span class="pl-c1">512</span>,fs);
@@ -1455,14 +1454,14 @@ a_t <span class="pl-ii">=</span>
 <span class="pl-c1">legend</span>(<span class="pl-s"><span class="pl-pds">'</span>原系统<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>变调系统<span class="pl-pds">'</span></span>);
 <span class="pl-c1">title</span>(<span class="pl-s"><span class="pl-pds">'</span>相频特性<span class="pl-pds">'</span></span>);</pre></div>
 
-<p><a href="pic/freqz-changetone.png" target="_blank"><img src="pic/freqz-changetone.png" alt="频率响应对比" style="max-width:100%;"></a></p>
+<p><a href="///G://Vone/Tsinghua/2015summer/matlab/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90/speech-synthesizer/pic/freqz-changetone.png" target="_blank"><img src="///G://Vone/Tsinghua/2015summer/matlab/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90/speech-synthesizer/pic/freqz-changetone.png" alt="频率响应对比" style="max-width:100%;"></a></p>
 
 <p><strong>变调后系统共振峰频率变为1150Hz</strong></p>
 </li>
 </ul>
 </li>
 <li>
-<p><strong>(练习13)</strong> 仿照<strong>(10)</strong>重改<a href="src/speechproc.m">speechproc.m</a>程序, 但要将基音周期减小一半, 将所有的共振峰频率都增加150Hz</p>
+<p><strong>(练习13)</strong> 仿照<strong>(10)</strong>重改<a href="///G://Vone/Tsinghua/2015summer/matlab/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90/speech-synthesizer/src/speechproc.m">speechproc.m</a>程序, 但要将基音周期减小一半, 将所有的共振峰频率都增加150Hz</p>
 
 <div class="highlight highlight-matlab"><pre><span class="pl-c">% (13) 将基音周期减小一半，将共振峰频率增加150Hz，重新合成语音，听听是啥感受～</span>
 
@@ -1493,7 +1492,7 @@ s_syn_t((n<span class="pl-k">-</span><span class="pl-c1">1</span>)<span class="p
 </li>
 </ul>
 
-<p><a href="pic/raise-tone.png" target="_blank"><img src="pic/raise-tone.png" alt="变调不变速" style="max-width:100%;"></a></p>
+<p><a href="///G://Vone/Tsinghua/2015summer/matlab/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90/speech-synthesizer/pic/raise-tone.png" target="_blank"><img src="///G://Vone/Tsinghua/2015summer/matlab/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90/speech-synthesizer/pic/raise-tone.png" alt="变调不变速" style="max-width:100%;"></a></p>
 
 <ul>
 <li><p>波形包络也有变化, 原因是改变了<strong>基音周期</strong>, 激励信号$e(n)$变化了</p></li>
@@ -1507,7 +1506,7 @@ s_syn_t((n<span class="pl-k">-</span><span class="pl-c1">1</span>)<span class="p
 
 <ol>
 <li>
-<p>容易发现, 变速变调可以完美地结合在一起, 新建<code>speechproc1(rv,rt,df)</code>(<a href="src/speechproc1.m">speechproc1.m</a>)实现<strong>变速变调</strong>功能</p>
+<p>容易发现, 变速变调可以完美地结合在一起, 新建<code>speechproc1(rv,rt,df)</code>(<a href="///G://Vone/Tsinghua/2015summer/matlab/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90/speech-synthesizer/src/speechproc1.m">speechproc1.m</a>)实现<strong>变速变调</strong>功能</p>
 
 <div class="highlight highlight-matlab"><pre><span class="pl-k">function</span> <span class="pl-v">H</span> = <span class="pl-en">speechproc1</span>(rv,rt,df)
 <span class="pl-c">%speechproc1(rv,rt,df)</span>
@@ -1639,7 +1638,7 @@ PT = Top;
 <li>
 <p><strong>参数测试</strong></p>
 
-<p>为了方便地进行<code>rv rt df</code>三个参数的调整, 不妨写一个简陋的<code>GUI</code>(<a href="src/gui.m">gui.m</a>)</p>
+<p>为了方便地进行<code>rv rt df</code>三个参数的调整, 不妨写一个简陋的<code>GUI</code>(<a href="///G://Vone/Tsinghua/2015summer/matlab/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90/speech-synthesizer/src/gui.m">gui.m</a>)</p>
 
 <div class="highlight highlight-matlab"><pre><span class="pl-k">function</span> <span class="pl-v">varargout</span> = <span class="pl-en">gui</span>(<span class="pl-smi">varargin</span>)
 <span class="pl-c">% GUI MATLAB code for gui.fig</span>
@@ -1816,7 +1815,7 @@ handles.axes1 = speechproc1(handles.rv,handles.rt,handles.df);
 
 <p><strong>效果如下</strong></p>
 
-<p><a href="pic/gui.png" target="_blank"><img src="pic/gui.png" alt="gui" style="max-width:100%;"></a></p>
+<p><a href="///G://Vone/Tsinghua/2015summer/matlab/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90/speech-synthesizer/pic/gui.png" target="_blank"><img src="///G://Vone/Tsinghua/2015summer/matlab/%E8%AF%AD%E9%9F%B3%E5%90%88%E6%88%90/speech-synthesizer/pic/gui.png" alt="gui" style="max-width:100%;"></a></p>
 
 <ul>
 <li><p>拖动滑块即可改变参数</p></li>
@@ -1830,6 +1829,7 @@ handles.axes1 = speechproc1(handles.rv,handles.rt,handles.df);
 
 <ul>
 <li><p>语音合成作业相比于音乐合成简单不少(因为最复杂的求<strong>基音周期</strong>已经实现好了), 熟练掌握了<code>filter</code>函数的用法</p></li>
+<li><p>由于处理是<strong>逐帧进行</strong>的, 因此<strong>必须保持滤波器的状态</strong>, 若不保持滤波器状态, 虽然合成语音内容还能听得出, 但是会伴随显著的噪声, 影响合成质量</p></li>
 <li><p>简单了解了<strong>GUI</strong>的原理, 实现了简单的<strong>GUI</strong>程序</p></li>
 </ul>
 </article></body></html>
